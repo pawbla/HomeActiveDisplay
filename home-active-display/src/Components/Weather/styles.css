@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'DigitFonts';
+    src: url('digital-7.ttf')  format('truetype');
+  }
+
+.weather {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.weather > .tempAndHum {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 160px;
+}
+.weather > .tempAndHum > div:first-child {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.weather > .tempAndHum > div:not(:first-child) {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: first baseline;
+    gap: 5px;
+}
+
+.weather > .tempAndHum > div:last-child {
+    color: DodgerBlue;
+}
+
+.weather > .tempAndHum > div:last-child > div:last-child {
+    padding-right: 10px;
+}
+
+.digitalFont {
+    font-family: 'DigitFonts';
+}
+
+.tempFont {
+    font-size: 130px;
+}
+
+.humFont {
+    font-size: 110px;
+}
+
+.unit {
+    font-size: 40px;
+}

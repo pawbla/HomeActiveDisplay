@@ -7,7 +7,10 @@ mockedBackend();
 
 function App() {
   return (
-    <Weather />
+    <div className="main">
+      <Weather />   
+    </div>
+    
   );
 }
 

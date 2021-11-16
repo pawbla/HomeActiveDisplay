@@ -8,7 +8,9 @@ const queryParams = "";
 const periodTime = 10000;
 
 export default function Weather(props) {
+
   const [response, setResponse] = useState();
+
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -21,24 +23,52 @@ export default function Weather(props) {
         let response = await getApi(url, queryParams)
         .then(json => {return json})
         .catch(error => {console.log("ERROR" + error.message)});
-        console.log(response)
-        setResponse(JSON.stringify(response));
+        setResponse(response);
        }
 
     return (
-        <div>
-            Weather components
-
-            {JSON.stringify(response)}
-
-        </div>
+        <WeatherContext values={response}/>
     )
 }
 
 function WeatherContext(props) {
+
   return (
-    <div>
-      Weather context
+    <div className="weather">
+      <TempAndHumidity name="IN" temperature={getInternalTemp(props.values)} humidity={getInternalHum(props.values)}/>
+      <TempAndHumidity name="OUT" temperature={getExternalTemp(props.values)} humidity={getExternalHum(props.values)}/>
     </div>
   )
+}
+
+function TempAndHumidity(props) {
+  return (
+    <div className="tempAndHum">
+        <div>{props.name}</div>
+        <div>
+          <div className="digitalFont tempFont">{props.temperature}</div><div className="digitalFont unit">&deg;C</div>
+        </div>
+        <div>
+          <div className="digitalFont humFont">{props.humidity}</div><div className="digitalFont unit">%</div>
+        </div>
+    </div>
+  )
+}
+
+const DEFAULT_EMPTY = "-";
+
+const getInternalTemp =(value) => {
+  return value ? value.in.temperature.value : DEFAULT_EMPTY;
+}
+
+const getInternalHum =(value) => {
+  return value ? value.in.humidity.value : DEFAULT_EMPTY;
+}
+
+const getExternalTemp =(value) => {
+  return value ? value.out.temperature.value : DEFAULT_EMPTY;
+}
+
+const getExternalHum =(value) => {
+  return value ? value.out.humidity.value : DEFAULT_EMPTY;
 }
