@@ -1,6 +1,5 @@
 .main {
-    width: 480px;
-    height: 320px;
+    height: 100%;
     background: black;
     border: 1px solid white;
     color: white;
