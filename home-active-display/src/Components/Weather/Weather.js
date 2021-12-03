@@ -4,6 +4,7 @@ import '../../Libs/RestApi/getApi';
 import { getApi } from '../../Libs/RestApi/getApi';
 
 const url = "weather/measurements";
+const port = "8082"
 const queryParams = "";
 const periodTime = 10000;
 
@@ -20,7 +21,7 @@ export default function Weather(props) {
       }, []);
 
       const getResponse = async() => {
-        let response = await getApi(url, queryParams)
+        let response = await getApi(port, url, queryParams)
         .then(json => {return json})
         .catch(error => {console.log("ERROR" + error.message)});
         setResponse(response);

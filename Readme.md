@@ -12,6 +12,14 @@ Currently are showing the following conditions:
 
 Application should be deployed on the Raspberry Pi in `/usr/local/bin/displayApp` directory.
 
+### Application deployment
+
+- Be sure that all mocks are removed
+- In `home-active-display` execute command `npm run build` to create build
+- Copy files from `build` folder to correct location on the Raspberry Pi defined in nginx.conf file
+- Clean chromium cashe `rm -rf ~/.cache/chromium`
+- Reboot Raspberry Pi
+
 ### Contact
 
 Paweł Błachut - blachut.pawel@gmail.com
