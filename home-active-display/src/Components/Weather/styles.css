@@ -6,22 +6,111 @@
 .weather {
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    flex-flow: column nowrap;
+    align-items: stretch;
 }
 
-.weather > .tempAndHum {
+.weather > .top {
+    height: 63%;
     display: flex;
-    flex-direction: column;
-    align-self: center;
-    width: 160px;
-}
-.weather > .tempAndHum > div:first-child {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 10px;
+    flex-direction: row;
 }
 
-.weather > .tempAndHum > div:not(:first-child) {
+.digitFont {
+    font-family: 'DigitFonts';
+}
+
+/* BOTTOM COMPONENT CSS*/
+
+.weather > .bottom {
+    flex-grow: 1;
+    border-top: 2px solid whitesmoke;
+    display: flex;
+    flex-direction: row;
+}
+
+.weather > .bottom > .leftB {
+    flex-basis: 30%;
+    padding: 5px;
+    border-right: 2px solid whitesmoke;
+}
+
+.weather > .bottom > .middleB {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+.weather > .bottom > .rightB {
+    flex-basis: 30%;
+    padding: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.leftB .pressure {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-top: 3px;
+    padding-right: 5px;
+}
+
+.leftB > .pressure > div:first-child  {
+    font-size: 40px;
+    padding: 0px 2px;
+}
+
+.leftB > .pressure > .unit  {
+    font-size: 30px
+}
+
+.middleB .caqi {
+    font-size: 40px;
+    color: black;
+    background-color: tomato;
+    margin-top: 5px;
+    margin-left: 15px;
+    padding: 2px;
+    text-align: center;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.rightB .polution {
+    flex-basis: 50%;
+}
+
+.rightB .polution div:not(:first-child) {
+    margin-top: 3px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.rightB .polution .value {
+    font-size: 30px;
+}
+
+.rightB .polution .value:last-child {
+    padding-right: 20px;
+}
+
+.rightB .polution .unit {
+    font-size: 20px;
+}
+
+/* SIDE COMPONENT CSS*/
+
+.weather .side {
+    flex-basis: 30%;
+    padding: 5px;
+}
+
+.weather .side > .temperature, .humidity {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
@@ -29,26 +118,127 @@
     gap: 5px;
 }
 
-.weather > .tempAndHum > div:last-child {
+.weather .side .add {
+    margin: 10px 5px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.weather .side .add .sun {
+    width: 100%;
+    text-align: right;
+    font-size: 40px;
+}
+
+.weather .side > .humidity {
     color: DodgerBlue;
 }
 
-.weather > .tempAndHum > div:last-child > div:last-child {
-    padding-right: 10px;
+.weather .side .tempFont {
+    font-size: 75px;
 }
 
-.digitalFont {
-    font-family: 'DigitFonts';
-}
-
-.tempFont {
-    font-size: 130px;
-}
-
-.humFont {
-    font-size: 110px;
-}
-
-.unit {
+.weather .side .humFont {
     font-size: 40px;
+}
+
+.weather .side .unit {
+    font-size: 30px;
+}
+
+/* MIDDLE COMPONENT CSS*/
+
+.weather .middle {
+    flex-grow: 1;
+    padding: 5px;
+    border-left: 2px solid whitesmoke;
+    border-right: 2px solid whitesmoke;
+}
+
+.title {
+    position: relative;
+    font-size: 15px;
+    text-align: left;
+}
+
+.wind .compass {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border: 6px double gray;
+    border-radius: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+}
+
+.wind .compass .letters {
+    position: absolute;
+    background-color: black;
+    text-align: center;
+    font-size: 20px;
+    font-family: monospace;
+}
+
+.wind .compass .nletter { 
+    width: 23px;
+    height: auto; 
+    padding: 1px 0px;  
+    top:-14px;
+    left: 29px;
+}
+
+.wind .compass .sletter {   
+    padding: 1px 0px;
+    width: 21px;
+    height: auto;
+    top: 70px;
+    left: 30px;
+}
+
+.wind .compass .wletter {  
+    width: auto;
+    height: auto;
+    padding: 3px 0px;
+    top: 25px;
+    left: -8px;
+}
+
+.wind .compass .eletter {  
+    width: auto;
+    height: auto;
+    padding: 3px 0px;
+    top: 25px;
+    left: 76px;
+}
+
+#arrowIndicator {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    font-size: 20px;
+    text-align: right;
+    z-index: 5;
+    color: red;
+}
+
+.weather .wind .unit {
+    font-size: 15px;
+}
+
+.weather .wind .value {
+    font-size: 40px;
+}
+
+.weather .icon {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.weather .icon .picture {
+    text-align: center;
+    margin: 5px auto;
 }

@@ -62,7 +62,7 @@ export const weatherResp = {
         "windDirectionDeg": {
             "date": "04.08 21:44",
             "isError": false,
-            "value": "45"
+            "value": "68"
         },
         "weatherIcon": {
             "date": "04.08 21:44",
@@ -92,7 +92,7 @@ export const weatherResp = {
         "windDirection": {
             "date": "04.08 21:44",
             "isError": false,
-            "value": "NE"
+            "value": "ENE"
         },
         "windSpeed": {
             "date": "04.08 21:44",
@@ -107,7 +107,7 @@ export const weatherResp = {
         "weatherText": {
             "date": "04.08 21:44",
             "isError": false,
-            "value": "Pochmurno"
+            "value": "Przeważnie bezchmurnie"
         }
     },
     "sun": {
