@@ -20,6 +20,28 @@ Application should be deployed on the Raspberry Pi in `/usr/local/bin/displayApp
 - Clean chromium cashe `rm -rf ~/.cache/chromium`
 - Reboot Raspberry Pi
 
-### Contact
+## Change log
+All important changes to this project will be documented in this place.
+
+### Version 1.0.0
+<details>
+<summary><b>Features</b> </summary>
+
+* Show air pollution information (e.g. CAQI)
+* Show sun rise and sun set time
+* Show wind speed and direction
+* Show atmoshperic pressure
+* Show internal and external temperature and humidity
+
+</details>
+
+<details>
+<summary><b>Bugs</b></summary>
+
+* Missing icons after deploying on Raspberry Pi
+
+</details>
+
+## Contact
 
 Paweł Błachut - blachut.pawel@gmail.com

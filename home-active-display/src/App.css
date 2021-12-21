@@ -3,4 +3,7 @@
     background: black;
     border: 1px solid white;
     color: white;
+    margin: 0px;
+    border: 0;
+    padding: 0;
 }
