@@ -1,4 +1,6 @@
 import React from 'react';
+import picSunRise from '../../assets/images/sunIcons/sunrise.png';
+import picSunSet from '../../assets/images/sunIcons/sunset.png';
 
 export default function SideComponent(props) {
     return (
@@ -14,7 +16,7 @@ export default function SideComponent(props) {
                 <div className="unit digitFont">%</div>
             </div>
             <div className="add">
-            <img src={`${process.env.PUBLIC_URL}/assets/images/sunIcons/${props.picName}.png`} alt="Obraz jest niedostępny  "/>
+            <img src={require(`../../assets/images/sunIcons/${props.picName}.png`).default} alt="Pusty"/>
                 <div className="sun digitFont">{props.sun}</div>
             </div>
         </div>

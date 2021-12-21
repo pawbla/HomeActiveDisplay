@@ -38,7 +38,7 @@ All important changes to this project will be documented in this place.
 <details>
 <summary><b>Bugs</b></summary>
 
-* Missing icons after deploying on Raspberry Pi
+* Missing icons after deploying on Raspberry Pi - fixed in commit [01d06e2c9dd0c94b291c5e430875e7d039d079d1](https://github.com/pawbla/HomeActiveDisplay/commit/01d06e2c9dd0c94b291c5e430875e7d039d079d1)
 
 </details>
 
