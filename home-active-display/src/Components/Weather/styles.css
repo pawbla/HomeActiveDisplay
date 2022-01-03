@@ -4,14 +4,15 @@
   }
 
 .weather {
-    height: 100%;
+    height: 320px;
     display: flex;
     flex-flow: column nowrap;
     align-items: stretch;
 }
 
 .weather > .top {
-    height: 63%;
+    min-height: 202px;
+    height: 202px;
     display: flex;
     flex-direction: row;
 }
@@ -23,6 +24,8 @@
 /* BOTTOM COMPONENT CSS*/
 
 .weather > .bottom {
+    min-height: 118px;
+    height: 118px;
     flex-grow: 1;
     border-top: 2px solid whitesmoke;
     display: flex;
@@ -30,17 +33,20 @@
 }
 
 .weather > .bottom > .leftB {
+    align-items: flex-start;
     flex-basis: 30%;
     padding: 5px;
     border-right: 2px solid whitesmoke;
 }
 
 .weather > .bottom > .middleB {
+    align-items: flex-start;
     flex-grow: 1;
     padding: 5px;
 }
 
 .weather > .bottom > .rightB {
+    align-items: flex-start;
     flex-basis: 30%;
     padding: 5px;
     display: flex;
@@ -48,6 +54,7 @@
 }
 
 .leftB .pressure {
+    min-height: 40px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
@@ -66,6 +73,7 @@
 }
 
 .middleB .caqi {
+    min-height: 40px;
     font-size: 40px;
     color: black;
     background-color: tomato;
@@ -82,7 +90,8 @@
 }
 
 .rightB .polution div:not(:first-child) {
-    margin-top: 3px;
+    min-height: 30px;
+    margin-top: 2px;
     margin-left: 5px;
     margin-right: 5px;
     display: flex;
@@ -106,6 +115,7 @@
 /* SIDE COMPONENT CSS*/
 
 .weather .side {
+    align-items: flex-start;
     flex-basis: 30%;
     padding: 5px;
 }
@@ -118,10 +128,20 @@
     gap: 5px;
 }
 
+.side > .temperature {
+    min-height: 70px; 
+}
+
+.side > .humidity {
+    min-height: 38px;
+}
+
 .weather .side .add {
+    min-height: 42px;
     margin: 10px 5px;
     display: flex;
     flex-flow: row nowrap;
+    align-items: baseline;
 }
 
 .weather .side .add .sun {
@@ -149,6 +169,7 @@
 /* MIDDLE COMPONENT CSS*/
 
 .weather .middle {
+    align-items: flex-start;
     flex-grow: 1;
     padding: 5px;
     border-left: 2px solid whitesmoke;
@@ -214,7 +235,13 @@
     left: 76px;
 }
 
+.wind .compass > div:last-child {
+    min-height: 58px;
+}
+
 #arrowIndicator {
+    min-width: 80px;
+    min-height: 30px;
     position: absolute;
     width: 80px;
     height: 30px;
@@ -225,10 +252,12 @@
 }
 
 .weather .wind .unit {
+    min-height: 16px;
     font-size: 15px;
 }
 
 .weather .wind .value {
+    min-height: 42px;
     font-size: 40px;
 }
 

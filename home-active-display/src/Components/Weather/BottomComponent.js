@@ -6,10 +6,7 @@ export default function BottomComponent(props) {
       <div className="bottom">
         <LeftBComponent pressure={props.pressure}/>
         <MiddleBComponent caqiColour={props.caqiColour} caqi={props.caqi}/>
-        <RightBComponent pm10per={props.pm10per} 
-                          pm10={props.pm10}
-                          pm25per={props.pm25per} 
-                          pm25={props.pm25}/>
+        <RightBComponent pm10per={props.pm10per} pm25per={props.pm25per} />
       </div>
     )
 }
@@ -38,8 +35,8 @@ function MiddleBComponent(props) {
 function RightBComponent(props) {
   return (
     <div className="rightB">
-      <AirPolutionComponent title="PM10" perValue={props.pm10per} value={props.pm10}/>
-      <AirPolutionComponent title="PM25" perValue={props.pm25per} value={props.pm25}/>
+      <AirPolutionComponent title="PM10" perValue={props.pm10per} />
+      <AirPolutionComponent title="PM25" perValue={props.pm25per} />
     </div>
   ) 
 }
@@ -50,9 +47,6 @@ function AirPolutionComponent(props) {
       <div className="title">{props.title}</div>
       <div>
         <div className="value digitFont">{props.perValue}</div><div className="unit digitFont">%</div>
-      </div>
-      <div>
-        <div className="value digitFont">{props.value}</div>
       </div>
     </div>
   )

@@ -62,7 +62,7 @@ function WindComponent(props) {
                 <div className="letters sletter">S</div>
                 <div className="letters eletter">E</div>
                 <div className="letters wletter">W</div>
-                <div id="arrowIndicator" style={{ transform: 'rotate(' + props.windDegree + 'deg)' }}>&#11166;</div>
+                <div id="arrowIndicator" style={{ transform: 'rotate(' + props.windDegree + 'deg)' }}><b>></b></div>
                 <div>
                     <div className="value digitFont">{props.windSpeed}</div>
                     <div className="unit digitFont">km/h</div>
