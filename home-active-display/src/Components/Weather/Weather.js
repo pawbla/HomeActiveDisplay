@@ -55,7 +55,8 @@ function WeatherContext(props) {
                       caqi={getCaqi(props.values)}
                       caqiColour={getCaqiColour(props.values)}
                       pm10per={getPm10Percent(props.values)}
-                      pm25per={getPm25Percent(props.values)} />
+                      pm25per={getPm25Percent(props.values)}
+                      caqiForecast={getCaqiForecast(props.values)} />
     </div>
   )
 }
@@ -108,4 +109,8 @@ const getPm10Percent = (value) => {
 
 const getPm25Percent = (value) => {
   return value ? value.airPolution.pm25percent.value : DEFAULT_EMPTY;
+}
+
+const getCaqiForecast = (value) => {
+  return value ? value.airPolution.forecast : undefined;
 }
