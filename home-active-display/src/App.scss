@@ -1,5 +1,7 @@
+@import "vars.scss";
+
 .main {
-    height: 320px;
+    height: $main_height;
     background: black;
     border: 1px solid white;
     color: white;

@@ -1,0 +1,281 @@
+@import "../../vars";
+@import "../../mixins";
+
+.weather {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    .top {
+        min-height: 60px;
+        height: 60px;
+        border-bottom: $border_size solid $border_colour;
+    }
+    .middle {
+        flex-grow: 2;
+        display: flex;
+        flex-flow: row nowrap;
+        .left {
+            width: 210px;
+            & > div {
+                display: flex;
+                flex-flow: row nowrap; 
+                justify-content: flex-end;
+                height: 50%;
+            }
+            .pressure {
+                border-top: $border_size solid $border_colour;
+                position: relative;
+                display: flex;
+                flex-flow: column nowrap; 
+                align-items: stretch;
+                .current {
+                    height: 50%;
+                    display: flex;
+                    flex-flow: row nowrap;  
+                    align-items: flex-end;
+                    justify-content: center;
+                    .value {
+                        @include ms_value;
+                        padding-right: 3px;
+                    }
+                    .unit {
+                        @include small_unit;
+                        padding-bottom: 22px;
+                    }
+                }
+                .graph {
+                    height: 50%;
+                }
+            }
+        }
+        .center {
+            flex-grow: 3;
+            border: $border_size solid $border_colour;
+            border-width: 0 $border_size;
+            & > div {
+                display: flex;
+                flex-flow: row nowrap; 
+                justify-content: flex-end;
+                height: 50%;
+            }
+            .wind {
+                position: relative;
+                display: flex;
+                flex-flow: row nowrap; 
+                .measurements {
+                    flex-grow: 3;
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center; 
+                    .value {
+                        @include ms_value;
+                        
+                    }
+                    .unit {
+                        @include small_unit;
+                    }
+                }
+                .pic {
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                    .value {
+                        position: absolute;
+                        top: 54px;
+                        left: 40px;
+                        width: 60px;
+                        text-align: center;
+                        font-family: monospace;
+                        font-size: 35px;
+                    }
+                    .indicator {
+                        position: absolute;
+                        top: 30px;
+                        left: 61px;
+                        width: 16px;
+                        height: 90px;
+                    }
+                }
+            }
+            .weather {
+                position: relative;
+                border-top: $border_size solid $border_colour;
+                display: flex;
+                flex-flow: column nowrap; 
+                align-items: stretch;
+                img {
+                    height: 60px;
+                    width: 85px;
+                    padding-top: 15px;
+                    align-self: center;
+                }
+                .text {
+                    flex-grow: 3;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding-bottom: 5px;
+                    text-align: center;
+                }
+            }
+        }
+        .right {
+            width: 325px;
+            & > div {
+                display: flex;
+                flex-flow: row nowrap;
+                position: relative;
+                justify-content: flex-end;
+                height: 50%;
+                padding-right: 10px; 
+                & > div {
+                    display: flex;
+                    flex-flow: row nowrap; 
+                    justify-content: flex-end;
+                    
+                }
+                .temp {
+                    padding-bottom: 20px;
+                    width: 200px;
+                    .value {
+                        @include big_value;
+                        align-self: flex-end;
+                       
+                    }
+                    .unit {
+                        @include big_unit;
+                        align-self: flex-start;
+                        padding-top: 25px;
+                    }
+                }
+                .hum {
+                    padding-bottom: 20px;
+                    color: $humidity_colour;
+                    width: 110px;
+                    .value {
+                        @include mid_value;
+                        align-self: flex-end;
+                        padding-bottom: 8px;
+                    }
+                    .unit {
+                        @include mid_unit;
+                        padding-top: 57px;
+                    }
+                }
+            }
+            & > div:last-child {
+                border-top: $border_size solid $border_colour;    
+            }
+        }
+    }
+    .bottom {
+        width: 100%;
+        min-height: 118px;
+        height: 118px;
+        border-top: $border_size solid $border_colour;
+        display: flex;
+        flex-flow: row nowrap;
+        align-content: stretch;
+        .sunriseset {
+            border-right: $border_size solid $border_colour;
+            width: 140px;
+            display: flex;
+            flex-flow: column nowrap;
+            position:relative;
+            justify-content: flex-end;
+            .item {
+                display: flex;
+                align-items: flex-end;
+                padding-left: 2px;
+                div {
+                    text-align: right;
+                    padding-right: 10px;
+                    padding-bottom: 7px;
+                    width: 100%;
+                    @include small_value;
+                }
+            }
+        }
+        .moon {
+            width: 145px;
+        }
+        .airPolution {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: stretch;
+            border-left: $border_size solid $border_colour;
+            position:relative;
+            padding-left: 3px;
+            .info {
+                padding-right: 10px;
+                height: 100px;
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                justify-content: flex-end;
+                .name {
+                    align-self: flex-end;
+                    margin-left: 15px;
+                    margin-right: 5px;
+                    padding-top: 10px;
+                    @include small_name;
+                    padding-bottom: 12px;
+                }
+                .caqi {
+                    font-family: $digit_font;
+                    min-height: 40px;
+                    font-size: 40px;
+                    color: black;
+                    background-color: tomato;
+                    margin-top: 5px;
+                    padding: 2px;
+                    text-align: center;
+                    width: 80px;
+                    border-radius: 10px;
+                    align-self: flex-start;
+                }
+                .value {
+                    @include small_value;
+                    width: 57px;
+                    text-align: right;
+                }
+                .unit {
+                    align-self: flex-end;
+                    @include small_unit;
+                    padding-bottom: 12px;
+                    padding-left: 2px;
+                }
+
+            }
+            .forecast {
+                height: 100px;
+                gap: 1px;
+                display: flex;
+                flex-flow: row noWrap;
+                .item {
+                    padding: 3px 2px;
+                    & > div:first-child {
+                        font-size: 25px;
+                        font-family: $digit_font;
+                        width: 35px;
+                        color: black;
+                        text-align: center;
+                        height: 28px;
+                        border-radius: 3px;
+                    }
+                    & > div:last-child {
+                        font-size: 18px;
+                        font-family: monospace; 
+                        width: 37px;
+                        text-align: center;
+                        height: 25px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@mixin big_unit {
+    font-size: 50px;
+    font-family: 'DigitFonts';
+}
+
+@mixin big_value {
+    font-size: 110px;
+    font-family: 'DigitFonts';
+}
+
+@mixin mid_unit {
+    font-size: 35px;
+    font-family: 'DigitFonts';
+}
+
+@mixin mid_value {
+    font-size: 70px;
+    font-family: 'DigitFonts';
+}
+
+@mixin ms_value {
+    font-size: 50px;
+    font-family: 'DigitFonts';
+}
+
+@mixin small_unit {
+    font-size: 25px;
+    font-family: 'DigitFonts';
+}
+
+@mixin small_value {
+    font-size: 40px;
+    font-family: 'DigitFonts';
+}
+
+@mixin small_name {
+    font-size: 15px;
+}

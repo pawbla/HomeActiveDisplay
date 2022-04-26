@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import './styles.css';
-import '../../Libs/RestApi/getApi';
-import SideComponent from './SideComponent';
+import './styles.scss';
+import { getApi } from '../../Libs/RestApi/getApi';
+import TopComponent from './TopComponent';
 import MiddleComponent from './MiddleComponent';
 import BottomComponent from './BottomComponent';
-import { getApi } from '../../Libs/RestApi/getApi';
 
 const url = "weather/measurements";
 const port = "8082"
 const queryParams = "";
 const periodTime = 10000;
 
+const DEFAULT_EMPTY = "-";
+
 export default function Weather(props) {
 
-  const [response, setResponse] = useState();
+  const [response, setResponse] = useState(prepareValues(undefined));
 
   useEffect(() => {
       const timer = setInterval(() => {
@@ -26,7 +27,7 @@ export default function Weather(props) {
       let response = await getApi(port, url, queryParams)
       .then(json => {return json})
       .catch(error => {console.log("ERROR" + error.message)});
-      setResponse(response);
+      setResponse(prepareValues(response));
       }
 
     return (
@@ -38,79 +39,86 @@ function WeatherContext(props) {
 
   return (
     <div className="weather">
-      <div className="top">
-        <SideComponent name="IN" 
-                      temperature={getInternalTemp(props.values)} 
-                      humidity={getInternalHum(props.values)}
-                      picName="sunrise"
-                      sun={getSunRise(props.values)}/>
-        <MiddleComponent weather={getWeather(props.values)}/>
-        <SideComponent name="OUT" 
-                      temperature={getExternalTemp(props.values)} 
-                      humidity={getExternalHum(props.values)} 
-                      picName="sunset"
-                      sun={getSunSet(props.values)}/>
-      </div>
-      <BottomComponent pressure={getPressure(props.values)}
-                      caqi={getCaqi(props.values)}
-                      caqiColour={getCaqiColour(props.values)}
-                      pm10per={getPm10Percent(props.values)}
-                      pm25per={getPm25Percent(props.values)}
-                      caqiForecast={getCaqiForecast(props.values)} />
+        <TopComponent />
+        <MiddleComponent values={props.values}/>
+        <BottomComponent values={props.values} />
     </div>
   )
 }
 
-const DEFAULT_EMPTY = "-";
-
-const getInternalTemp =(value) => {
-  return value ? value.in.temperature.value : DEFAULT_EMPTY;
+const prepareValues = (data) => {
+  return {
+    airPollution: {
+      pm25percent: data ? prepareValueAndError(data.airPolution.pm25percent) :  prepareDefaultValueAndError(),
+      pm10percent: data ? prepareValueAndError(data.airPolution.pm10percent) :  prepareDefaultValueAndError(),
+      caqiColor: data ? prepareValueAndError(data.airPolution.caqiColor) :  prepareDefaultValueAndError(),
+      caqi: data ? prepareValueAndError(data.airPolution.caqi) :  prepareDefaultValueAndError(),
+      forecast: data ? data.airPolution.forecast : prepareDefaultAirPollutionForecast(),   
+    },
+    day: {
+      sunrise: data ? prepareValueAndError(data.sun.rise) : prepareDefaultValueAndError(),
+      sunset: data ? prepareValueAndError(data.sun.set) : prepareDefaultValueAndError(),
+    },
+    weather: {
+      pressure: data ? prepareValueAndError(data.weather.pressure) : prepareDefaultValueAndError(),
+      text:  data ? prepareValueAndError(data.weather.weatherText) : prepareDefaultValueAndError(),
+      icon: data ? prepareValueAndErrorForIcon(data.weather.weatherIcon) : prepareDefaultValueAndError(),
+      in: {
+        temp: data ? prepareValueAndError(data.in.temperature) : prepareDefaultValueAndError(),
+        hum: data ? prepareValueAndError(data.in.humidity) : prepareDefaultValueAndError(),
+      },
+      out: {
+        temp: data ? prepareValueAndError(data.out.temperature) : prepareDefaultValueAndError(),
+        hum: data ? prepareValueAndError(data.out.humidity) : prepareDefaultValueAndError(),
+      },
+      wind: {
+        speed: data ? prepareValueAndError(data.weather.windSpeed) : prepareDefaultValueAndError(),
+        dirDeg: data ? prepareValueAndError(data.weather.windDirectionDeg) : prepareDefaultValueAndError(),
+        dirVal: data ? prepareValueAndError(data.weather.windDirection) : prepareDefaultValueAndError(),
+      }
+    }
+  }
 }
 
-const getInternalHum =(value) => {
-  return value ? value.in.humidity.value : DEFAULT_EMPTY;
+const prepareValueAndErrorForIcon = (data) => {
+  let newData = prepareValueAndError(data);
+  console.log("=== new data ==" + JSON.stringify(newData))
+  newData["value"] = (newData.value === DEFAULT_EMPTY ? newData.value : prepareIconNo(newData.value));
+  return newData;
 }
 
-const getExternalTemp =(value) => {
-  return value ? value.out.temperature.value : DEFAULT_EMPTY;
+const prepareValueAndError = (data) => {
+  return {
+    value: data ? data.value : DEFAULT_EMPTY,
+    isError: data ? data.isError : true
+  }
 }
 
-const getExternalHum =(value) => {
-  return value ? value.out.humidity.value : DEFAULT_EMPTY;
+const prepareDefaultValueAndError = () => {
+  return prepareValueAndError(undefined);
 }
 
-const getWeather = (value) => {
-  return value ? value.weather : undefined;
+const prepareDefaultAirPollutionForecast = () => {
+  return {
+    date: DEFAULT_EMPTY,
+    isError: true,
+    values: prepareDefaultAirPollutionForecastValues()
+  }
 }
 
-const getSunRise = (value) => {
-  return value ? value.sun.rise.value : DEFAULT_EMPTY;
+
+const prepareDefaultAirPollutionForecastValues = () => {
+  var arr = [];
+  for (var i = 0; i < 12; i++) {
+    arr.push({
+        date: DEFAULT_EMPTY,
+        caqi: DEFAULT_EMPTY,
+        caqiColor: DEFAULT_EMPTY
+    });
+}
+  return arr;
 }
 
-const getSunSet = (value) => {
-  return value ? value.sun.set.value : DEFAULT_EMPTY;
-}
-
-const getPressure = (value) => {
-  return value ? value.weather.pressure.value : DEFAULT_EMPTY;
-}
-
-const getCaqi = (value) => {
-  return value ? value.airPolution.caqi.value : DEFAULT_EMPTY;
-}
-
-const getCaqiColour = (value) => {
-  return value ? value.airPolution.caqiColor.value : "black";
-}
-
-const getPm10Percent = (value) => {
-  return value ? value.airPolution.pm10percent.value : DEFAULT_EMPTY;
-}
-
-const getPm25Percent = (value) => {
-  return value ? value.airPolution.pm25percent.value : DEFAULT_EMPTY;
-}
-
-const getCaqiForecast = (value) => {
-  return value ? value.airPolution.forecast : undefined;
+const prepareIconNo = (iconNo) => {
+  return  iconNo <= 9 ? "0"+iconNo : iconNo;
 }

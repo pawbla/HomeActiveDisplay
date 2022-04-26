@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Weather from './Components/Weather/Weather';
 
 //Mocked service for testing purpose, remove when deployed for integration

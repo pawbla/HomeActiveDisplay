@@ -1,0 +1,12 @@
+@import "../../vars.scss";
+
+.label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 1px 5px;
+    color: black;
+    background: $main_colour;
+    font-family: monospace;
+    font-size: 15px;
+}

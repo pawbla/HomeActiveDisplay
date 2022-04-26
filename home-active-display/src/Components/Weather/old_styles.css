@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'DigitFonts';
-    src: url('digital-7.ttf')  format('truetype');
-  }
+
 
 .weather {
     height: 320px;

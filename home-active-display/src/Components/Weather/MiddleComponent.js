@@ -1,4 +1,6 @@
 import React from 'react';
+import Label from '../common/Label';
+
 import pic01  from '../../assets/images/weatherIcons/01.png';
 import pic02  from '../../assets/images/weatherIcons/02.png';
 import pic03  from '../../assets/images/weatherIcons/03.png';
@@ -40,58 +42,116 @@ import pic42  from '../../assets/images/weatherIcons/42.png';
 import pic43  from '../../assets/images/weatherIcons/43.png';
 import pic44  from '../../assets/images/weatherIcons/44.png';
 
- 
+import compass  from '../../assets/images/utils/compass.png';
+
+const IN_LABEL = "In";
+const OUT_LABEL = "Out";
+const WEATHER_LABEL = "Weather";
+const WIND_LABEL = "Wind";
+const PRESSURE_LABEL = "Pressure";
+
 export default function MiddleComponent(props) {
-    return (
+    return(
         <div className="middle">
-            <WindComponent windDegree={getWindDegree(props.weather)} windSpeed={getWindSpeed(props.weather)}/>
-            <IconComponent iconNo={getWeatherIcon(props.weather)}/>
+            <LeftSide weather={props.values.weather}/>
+            <CenterSide weather={props.values.weather}/>
+            <RightSide in={props.values.weather.in} out={props.values.weather.out}/>
+        </div>
+    );
+}
+
+function LeftSide(props) {
+    return (
+        <div className="left">
+            <Empty />
+            <PressureComponent pressure={props.weather.pressure}/>
         </div>
     )
 }
 
-const DEFAULT_EMPTY = "-";
+function CenterSide(props) {
+    return (
+        <div className="center">
+            <WindComponent wind={props.weather.wind}/>
+            <WeatherComponent text={props.weather.text} icon={props.weather.icon}/>
+        </div>
+    )
+}
 
-function WindComponent(props) {      
+function RightSide(props) {
+    return (
+        <div className="right">
+            <TempHumComponent label={IN_LABEL} temp={props.in.temp.value} hum={props.in.hum.value}/>
+            <TempHumComponent label={OUT_LABEL} temp={props.out.temp.value} hum={props.out.hum.value}/>
+        </div>
+    )
+}
 
-    return(
+function TempHumComponent(props) {
+    return (
+        <div>
+           <Label label={props.label}/>
+           <div className="temp">
+                <div className="value">{props.temp}</div>
+                <div className="unit">&deg;C</div>
+            </div>
+           <div className="hum">
+                <div className="value">{props.hum}</div>
+                <div className="unit">%</div>
+            </div>    
+        </div>
+    )
+}
+
+function WindComponent(props) {
+    return (
         <div className="wind">
-            <div className="title">WIND</div>
-            <div className="compass">
-                <div className="letters nletter">N</div>
-                <div className="letters sletter">S</div>
-                <div className="letters eletter">E</div>
-                <div className="letters wletter">W</div>
-                <div id="arrowIndicator" style={{ transform: 'rotate(' + props.windDegree + 'deg)' }}><b>></b></div>
-                <div>
-                    <div className="value digitFont">{props.windSpeed}</div>
-                    <div className="unit digitFont">km/h</div>
+            <Label label={WIND_LABEL}/>
+            <div className="measurements">
+                <div className="value">{props.wind.speed.value}</div>
+                <div className="unit">km/h</div>
+            </div>
+            <div className="pic">
+                <img src={require(`../../assets/images/utils/compass.png`).default} alt="Brak obrazka"/>
+                <div className="value">{props.wind.dirVal.value}</div>
+                <div className="indicator" style={{ transform: 'rotate(' + props.wind.dirDeg.value + 'deg)' }}>
+                    <img src={require(`../../assets/images/utils/indicator.png`).default} alt="Brak obrazka"/>
                 </div>
             </div>
+            
         </div>
     )
 }
 
-function IconComponent(props) {
-    return(
-        <div className="icon">
-            <div className="title">WEATHER</div> 
-            <div className="picture">
-                <img src={require(`../../assets/images/weatherIcons/${props.iconNo}.png`).default} alt="Brak obrazka"/>
+function WeatherComponent(props) {
+    return (
+        <div className="weather">
+            <Label label={WEATHER_LABEL}/>
+            {props.icon.value === "-"? null : <img src={require(`../../assets/images/weatherIcons/${props.icon.value}.png`).default} alt="-"/>}
+            <div className="text">{props.text.value}</div>
+        </div>
+    )
+}
+
+function Empty() { //Rename if needed
+    return (
+        <div>
+            
+        </div>
+    )
+}
+
+function PressureComponent(props) {
+    return (
+        <div className="pressure">
+            <Label label={PRESSURE_LABEL}/>
+            <div className="current">
+                <div className="value">{props.pressure.value}</div>
+                <div className="unit">hPa</div>
+            </div>
+            <div className="graph">
+                {/* Placeholder for pressure history diagram*/}
             </div>
         </div>
     )
-}
-
-const getWindSpeed = (weather) => {
-    return weather ? weather.windSpeed.value : DEFAULT_EMPTY;
-}
-  
-const getWindDegree = (weather) => {
-    return weather ? weather.windDirectionDeg.value - 90 : 0;
-}
-
-const getWeatherIcon = (weather) => {
-    var iconNo =  weather ? weather.weatherIcon.value : 1;
-    return iconNo <= 9 ? "0"+iconNo : iconNo; 
 }
