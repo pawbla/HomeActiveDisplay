@@ -1,5 +1,6 @@
 import React from 'react';
 import Label from '../common/Label';
+import {sortByDate} from '../../utils/utils';
 
 import picSunRise from '../../assets/images/sunIcons/sunrise.png';
 import picSunSet from '../../assets/images/sunIcons/sunset.png';
@@ -97,14 +98,4 @@ function CaqiForecastItem(props) {
       </div>
     </div>
   )
-}
-
-function sortByDate(a,b) {
-  if (a.date > b.date) {
-    return 1;
-  }
-  if (a.date < b.date) {
-    return -1;
-  }
-  return 0;
 }

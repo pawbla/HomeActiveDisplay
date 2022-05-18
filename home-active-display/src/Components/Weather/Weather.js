@@ -11,6 +11,7 @@ const queryParams = "";
 const periodTime = 10000;
 
 const DEFAULT_EMPTY = "-";
+const DEFAULT_EMPTY_ARR = [];
 
 export default function Weather(props) {
 
@@ -76,13 +77,15 @@ const prepareValues = (data) => {
         dirDeg: data ? prepareValueAndError(data.weather.windDirectionDeg) : prepareDefaultValueAndError(),
         dirVal: data ? prepareValueAndError(data.weather.windDirection) : prepareDefaultValueAndError(),
       }
+    },
+    history: {
+      pressure: data ? data.history.pressure : DEFAULT_EMPTY_ARR
     }
   }
 }
 
 const prepareValueAndErrorForIcon = (data) => {
   let newData = prepareValueAndError(data);
-  console.log("=== new data ==" + JSON.stringify(newData))
   newData["value"] = (newData.value === DEFAULT_EMPTY ? newData.value : prepareIconNo(newData.value));
   return newData;
 }

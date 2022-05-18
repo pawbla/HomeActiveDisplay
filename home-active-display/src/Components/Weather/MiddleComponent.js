@@ -1,5 +1,8 @@
 import React from 'react';
+import { BarChart, XAxis, YAxis, Bar,Tooltip } from 'recharts';
+
 import Label from '../common/Label';
+import {calculateHistory} from '../../utils/pressureUtils';
 
 import pic01  from '../../assets/images/weatherIcons/01.png';
 import pic02  from '../../assets/images/weatherIcons/02.png';
@@ -50,10 +53,12 @@ const WEATHER_LABEL = "Weather";
 const WIND_LABEL = "Wind";
 const PRESSURE_LABEL = "Pressure";
 
+const CHART_OFFSET = 5;
+
 export default function MiddleComponent(props) {
     return(
         <div className="middle">
-            <LeftSide weather={props.values.weather}/>
+            <LeftSide weather={props.values.weather} history={props.values.history}/>
             <CenterSide weather={props.values.weather}/>
             <RightSide in={props.values.weather.in} out={props.values.weather.out}/>
         </div>
@@ -64,7 +69,7 @@ function LeftSide(props) {
     return (
         <div className="left">
             <Empty />
-            <PressureComponent pressure={props.weather.pressure}/>
+            <PressureComponent pressure={props.weather.pressure} pressureHistory={props.history.pressure}/>
         </div>
     )
 }
@@ -150,8 +155,26 @@ function PressureComponent(props) {
                 <div className="unit">hPa</div>
             </div>
             <div className="graph">
-                {/* Placeholder for pressure history diagram*/}
+                <BarChart 
+                    width={200} 
+                    height={70} 
+                    data={calculateHistory(props.pressureHistory, props.pressure.value)} 
+                    barCategoryGap={1}>
+                    <XAxis dataKey="name" />
+                    <YAxis 
+                        domain={[getMinWithOffset(props.pressureHistory), getMaxWithOffset(props.pressureHistory)]} 
+                        hide={true}/> 
+                    <Bar dataKey="value" fill="whitesmoke" />
+                </BarChart>
             </div>
         </div>
     )
+}
+
+const getMinWithOffset = (pressureArr) => {
+    return Math.min(...pressureArr.map(i => i.value)) - CHART_OFFSET;
+}
+
+const getMaxWithOffset = (pressureArr) => {
+    return Math.max(...pressureArr.map(i => i.value)) + CHART_OFFSET;
 }
