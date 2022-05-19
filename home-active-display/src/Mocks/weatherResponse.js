@@ -21,7 +21,7 @@ export const weatherResp = {"airPolution":{
       "value":"#D1CF1E"},
     "caqi":{
       "date":"10.04 20:38",
-      "isError":false,
+      "isError":true,
       "value":"31"},
     "pm10":{
       "date":"10.04 20:38",
@@ -157,7 +157,7 @@ export const weatherResp = {"airPolution":{
     "in":{
       "temperature":{
         "date":"10.04 20:38",
-        "isError":false,
+        "isError":true,
         "value":"1"},
       "humidity":{
         "date":"10.04 20:38",

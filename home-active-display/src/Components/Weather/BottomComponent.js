@@ -18,9 +18,9 @@ const FORECAST_ITEM_NO = 12;
 export default function BottomComponent(props) {
     return(
         <div className="bottom">
-            <SunRiseSet values={props.values.day}/>
+            <SunRiseSet day={props.values.day}/>
             <MoonInfo />
-            <AirPolution values={props.values.airPollution}/>
+            <AirPolution airPollution={props.values.airPollution}/>
         </div>
     );
 }
@@ -28,9 +28,9 @@ export default function BottomComponent(props) {
 function SunRiseSet(props) {
   return (
     <div className="sunriseset">  
-      <Label label={SUN_LABEL}/>
-      <SunItem time={props.values.sunrise.value} pic={require(`../../assets/images/sunIcons/sunrise.png`).default}/>
-      <SunItem time={props.values.sunset.value} pic={require(`../../assets/images/sunIcons/sunset.png`).default}/>
+      <Label label={SUN_LABEL} isError={props.day.isError}/>
+      <SunItem time={props.day.sunrise} pic={require(`../../assets/images/sunIcons/sunrise.png`).default}/>
+      <SunItem time={props.day.sunset} pic={require(`../../assets/images/sunIcons/sunset.png`).default}/>
     </div>
   )
 }
@@ -54,9 +54,9 @@ function MoonInfo(props) {
 function AirPolution(props) {
     return (
         <div className="airPolution">
-            <Label label={AIR_POLLUTION_LABEL}/>
-            <AirPolutionInfo data={props.values}/>
-            <AirPolutionForecast data={props.values}/>
+            <Label label={AIR_POLLUTION_LABEL} isError={props.airPollution.isError}/>
+            <AirPolutionInfo data={props.airPollution}/>
+            <AirPolutionForecast data={props.airPollution}/>
         </div>
     )
 }
@@ -65,12 +65,12 @@ function AirPolutionInfo(props) {
     return ( 
         <div className="info">
             <div className="name">{CAQI_NAME}:</div>
-            <div className="caqi" style={{backgroundColor: props.data.caqiColor.value }}>{props.data.caqi.value}</div>
+            <div className="caqi" style={{backgroundColor: props.data.caqiColor }}>{props.data.caqi}</div>
             <div className="name">{PM_10_NAME}:</div>
-            <div className="value">{props.data.pm10percent.value}</div>
+            <div className="value">{props.data.pm10percent}</div>
             <div className="unit">{PERCENT_UNIT}</div>
             <div className="name">{PM_25_NAME}:</div>
-            <div className="value">{props.data.pm25percent.value}</div>
+            <div className="value">{props.data.pm25percent}</div>
             <div className="unit">{PERCENT_UNIT}</div>
         </div>
     )
