@@ -40,15 +40,16 @@
                     height: 50%;
                     display: flex;
                     flex-flow: row nowrap;  
-                    align-items: flex-end;
                     justify-content: center;
                     .value {
                         @include ms_value;
                         padding-right: 3px;
+                        padding-top: 25px;
                     }
                     .unit {
                         @include small_unit;
                         padding-bottom: 22px;
+                        padding-top: 25px;
                     }
                 }
                 .graph {
@@ -75,14 +76,15 @@
                     display: flex;
                     flex-flow: column nowrap;
                     align-items: center;
-                    justify-content: center;
                     text-align: center; 
                     .value {
                         @include ms_value;
-                        
+                        padding-top: 35px;
+                        height: 50px;
                     }
                     .unit {
                         @include small_unit;
+                        height: 48px;
                     }
                 }
                 .pic {
@@ -146,11 +148,11 @@
                     
                 }
                 .temp {
-                    padding-bottom: 20px;
                     width: 200px;
                     .value {
                         @include big_value;
-                        align-self: flex-end;
+                        align-self: flex-start;
+                        padding-top: 25px;
                        
                     }
                     .unit {
@@ -160,13 +162,12 @@
                     }
                 }
                 .hum {
-                    padding-bottom: 20px;
                     color: $humidity_colour;
                     width: 110px;
                     .value {
                         @include mid_value;
-                        align-self: flex-end;
-                        padding-bottom: 8px;
+                        align-self: flex-start;
+                        padding-top: 57px;
                     }
                     .unit {
                         @include mid_unit;
@@ -187,12 +188,29 @@
         display: flex;
         flex-flow: row nowrap;
         align-content: stretch;
+        .moon {
+            position: relative;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-end;
+            img {
+                width: 60px;
+                height: 60px;
+                align-self: center;
+                padding-bottom: 6px;
+            }
+            .text {
+                height: 30px;
+                text-align: center;
+            }
+
+        }
         .sunriseset {
             border-right: $border_size solid $border_colour;
             width: 140px;
             display: flex;
             flex-flow: column nowrap;
-            position:relative;
+            position: relative;
             justify-content: flex-end;
             .item {
                 display: flex;
@@ -218,7 +236,6 @@
             position:relative;
             padding-left: 3px;
             .info {
-                padding-right: 10px;
                 height: 100px;
                 display: flex;
                 flex-flow: row nowrap;
@@ -231,6 +248,7 @@
                     padding-top: 10px;
                     @include small_name;
                     padding-bottom: 12px;
+                    width: 40px;
                 }
                 .caqi {
                     font-family: $digit_font;
@@ -255,6 +273,7 @@
                     @include small_unit;
                     padding-bottom: 12px;
                     padding-left: 2px;
+                    width: 15px;
                 }
 
             }

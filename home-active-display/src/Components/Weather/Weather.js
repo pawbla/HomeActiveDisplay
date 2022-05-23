@@ -65,6 +65,12 @@ const prepareValues = (data) => {
       forecast: data ? data.airPolution.forecast : prepareDefaultAirPollutionForecast(),
       isError: data ? isErrorAirPollution(data.airPolution) : true
     },
+    moon: {
+      text: data ? data.moon.text.value : DEFAULT_EMPTY,
+      icon: data ? data.moon.picture.value : DEFAULT_EMPTY,
+      isError: data ? isErrorMoon(data) : true
+
+    },
     middle: {
       pressure: {
         pressure: data ? data.weather.pressure.value : DEFAULT_EMPTY,
@@ -120,6 +126,10 @@ const isErrorWind = (weather) => {
 const isErrorTempHum = (data) => {
   return (data.temperature.isError || data.humidity.isError);
 }
+
+const isErrorMoon = (data) => {
+  return (data.moon.isError || data.moon.isError);
+} 
 
 const isError = (data) => {
   return (data.day.isError 

@@ -5,12 +5,15 @@ import {sortByDate} from '../../utils/utils';
 import picSunRise from '../../assets/images/sunIcons/sunrise.png';
 import picSunSet from '../../assets/images/sunIcons/sunset.png';
 
+import moon_01 from '../../assets/images/moon/moon_0.png';
+
 const CAQI_NAME = "CAQI";
 const PM_10_NAME = "PM10";
 const PM_25_NAME = "PM25";
 const PERCENT_UNIT = "%";
 
 const SUN_LABEL = "Sun";
+const MOON_LABEL = "Moon";
 const AIR_POLLUTION_LABEL = "Air Pollution";
 
 const FORECAST_ITEM_NO = 12;
@@ -19,7 +22,7 @@ export default function BottomComponent(props) {
     return(
         <div className="bottom">
             <SunRiseSet day={props.values.day}/>
-            <MoonInfo />
+            <MoonInfo moon={props.values.moon}/>
             <AirPolution airPollution={props.values.airPollution}/>
         </div>
     );
@@ -47,8 +50,13 @@ function SunItem(props) {
 function MoonInfo(props) {
   return (
     <div className="moon">
+       <Label label={MOON_LABEL} isError={props.moon.isError}/>
+       <img src={require(`../../assets/images/moon/moon_0.png`).default} alt="-"/>
+       <div className="text">
+         {props.moon.text}
+       </div>
     </div>
-  )
+  ) //{props.icon === "-"? null : <img src={require(`../../assets/images/weatherIcons/${props.icon}.png`).default} alt="-"/>}
 }
 
 function AirPolution(props) {
