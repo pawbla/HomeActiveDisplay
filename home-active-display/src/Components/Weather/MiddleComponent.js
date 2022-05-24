@@ -3,6 +3,7 @@ import { BarChart, XAxis, YAxis, Bar,Tooltip } from 'recharts';
 
 import Label from '../common/Label';
 import {calculateHistory} from '../../utils/pressureUtils';
+import {DEFAULTS, LABELS} from './Constants';
 
 import pic01  from '../../assets/images/weatherIcons/01.png';
 import pic02  from '../../assets/images/weatherIcons/02.png';
@@ -47,12 +48,6 @@ import pic44  from '../../assets/images/weatherIcons/44.png';
 
 import compass  from '../../assets/images/utils/compass.png';
 
-const IN_LABEL = "In";
-const OUT_LABEL = "Out";
-const WEATHER_LABEL = "Weather";
-const WIND_LABEL = "Wind";
-const PRESSURE_LABEL = "Pressure";
-
 const CHART_OFFSET = 5;
 
 export default function MiddleComponent(props) {
@@ -86,8 +81,8 @@ function CenterSide(props) {
 function RightSide(props) {
     return (
         <div className="right">
-            <TempHumComponent label={IN_LABEL} temp={props.in.temp} hum={props.in.hum} isError={props.in.isError}/>
-            <TempHumComponent label={OUT_LABEL} temp={props.out.temp} hum={props.out.hum} isError={props.out.isError}/>
+            <TempHumComponent label={LABELS.IN} temp={props.in.temp} hum={props.in.hum} isError={props.in.isError}/>
+            <TempHumComponent label={LABELS.OUT} temp={props.out.temp} hum={props.out.hum} isError={props.out.isError}/>
         </div>
     )
 }
@@ -98,11 +93,11 @@ function TempHumComponent(props) {
            <Label label={props.label} isError={props.isError}/>
            <div className="temp">
                 <div className="value">{props.temp}</div>
-                <div className="unit">&deg;C</div>
+            <div className="unit">&deg;C</div>
             </div>
            <div className="hum">
                 <div className="value">{props.hum}</div>
-                <div className="unit">%</div>
+                <div className="unit">{LABELS.PERCENT_UNIT}</div>
             </div>    
         </div>
     )
@@ -111,7 +106,7 @@ function TempHumComponent(props) {
 function WindComponent(props) {
     return (
         <div className="wind">
-            <Label label={WIND_LABEL} isError={props.wind.isError}/>
+            <Label label={LABELS.WIND} isError={props.wind.isError}/>
             <div className="measurements">
                 <div className="value">{props.wind.speed}</div>
                 <div className="unit">km/h</div>
@@ -131,8 +126,8 @@ function WindComponent(props) {
 function WeatherComponent(props) {
     return (
         <div className="weather">
-            <Label label={WEATHER_LABEL} isError={props.isError}/>
-            {props.icon === "-"? null : <img src={require(`../../assets/images/weatherIcons/${props.icon}.png`).default} alt="-"/>}
+            <Label label={LABELS.WEATHER} isError={props.isError}/>
+            {props.icon === DEFAULTS.EMPTY? null : <img src={require(`../../assets/images/weatherIcons/${props.icon}.png`).default} alt={DEFAULTS.EMPTY}/>}
             <div className="text">{props.text}</div>
         </div>
     )
@@ -149,7 +144,7 @@ function Empty() { //Rename if needed
 function PressureComponent(props) {
     return (
         <div className="pressure">
-            <Label label={PRESSURE_LABEL} isError={props.pressure.isError}/>
+            <Label label={LABELS.PRESSURE} isError={props.pressure.isError}/>
             <div className="current">
                 <div className="value">{props.pressure.pressure}</div>
                 <div className="unit">hPa</div>

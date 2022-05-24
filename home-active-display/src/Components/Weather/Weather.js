@@ -4,16 +4,12 @@ import { getApi } from '../../Libs/RestApi/getApi';
 import TopComponent from './TopComponent';
 import MiddleComponent from './MiddleComponent';
 import BottomComponent from './BottomComponent';
+import {DEFAULTS} from './Constants';
 
 const url = "weather/measurements";
 const port = "8082"
 const queryParams = "";
 const periodTime = 10000;
-
-const DEFAULT_EMPTY = "-";
-const DEFAULT_EMPTY_ARR = [];
-
-let isGlobalError = false;
 
 export default function Weather(props) {
 
@@ -30,7 +26,6 @@ export default function Weather(props) {
       let response = await getApi(port, url, queryParams)
       .then(json => {return json})
       .catch(error => {console.log("ERROR" + error.message)});
-      isGlobalError = false;
       setResponse(prepareValues(response));
       }
 
@@ -40,7 +35,6 @@ export default function Weather(props) {
 }
 
 function WeatherContext(props) {
-  console.log(isGlobalError);
   return (
     <div className="weather">
         <TopComponent isError={isError(props.values)}/>
@@ -53,49 +47,49 @@ function WeatherContext(props) {
 const prepareValues = (data) => {
   return {
     day: {
-      sunrise: data ? data.sun.rise.value : DEFAULT_EMPTY,
-      sunset: data ? data.sun.set.value : DEFAULT_EMPTY,
+      sunrise: data ? data.sun.rise.value : DEFAULTS.EMPTY,
+      sunset: data ? data.sun.set.value : DEFAULTS.EMPTY,
       isError: data ? isErrorDay(data.sun) : true
     },
     airPollution: {
-      pm25percent: data ? data.airPolution.pm25percent.value : DEFAULT_EMPTY,
-      pm10percent: data ? data.airPolution.pm10percent.value : DEFAULT_EMPTY,
-      caqiColor: data ? data.airPolution.caqiColor.value : DEFAULT_EMPTY,
-      caqi: data ? data.airPolution.caqi.value : DEFAULT_EMPTY,
+      pm25percent: data ? data.airPolution.pm25percent.value : DEFAULTS.EMPTY,
+      pm10percent: data ? data.airPolution.pm10percent.value : DEFAULTS.EMPTY,
+      caqiColor: data ? data.airPolution.caqiColor.value : DEFAULTS.EMPTY,
+      caqi: data ? data.airPolution.caqi.value : DEFAULTS.EMPTY,
       forecast: data ? data.airPolution.forecast : prepareDefaultAirPollutionForecast(),
       isError: data ? isErrorAirPollution(data.airPolution) : true
     },
     moon: {
-      text: data ? data.moon.text.value : DEFAULT_EMPTY,
-      icon: data ? data.moon.picture.value : DEFAULT_EMPTY,
+      text: data ? data.moon.text.value : DEFAULTS.EMPTY,
+      icon: data ? data.moon.picture.value : 0,
       isError: data ? isErrorMoon(data) : true
 
     },
     middle: {
       pressure: {
-        pressure: data ? data.weather.pressure.value : DEFAULT_EMPTY,
-        history: data ? data.history.pressure : DEFAULT_EMPTY_ARR,
+        pressure: data ? data.weather.pressure.value : DEFAULTS.EMPTY,
+        history: data ? data.history.pressure : DEFAULTS.EMPTY_ARR,
         isError: data ? isErrorPressure(data.weather.pressure, data.history.pressure) : true
       },
       weather: {
-        text:  data ? data.weather.weatherText.value : DEFAULT_EMPTY,
-        icon: data ? prepareIconNo(data.weather.weatherIcon.value) : DEFAULT_EMPTY,
+        text:  data ? data.weather.weatherText.value : DEFAULTS.EMPTY,
+        icon: data ? prepareIconNo(data.weather.weatherIcon.value) : DEFAULTS.EMPTY,
         isError: data ? isErrorWeather(data.weather) : true
       },
       wind: {
-        speed: data ? data.weather.windSpeed.value : DEFAULT_EMPTY,
-        dirDeg: data ? data.weather.windDirectionDeg.value : DEFAULT_EMPTY,
-        dirVal: data ? data.weather.windDirection.value : DEFAULT_EMPTY,
+        speed: data ? data.weather.windSpeed.value : DEFAULTS.EMPTY,
+        dirDeg: data ? data.weather.windDirectionDeg.value : DEFAULTS.EMPTY,
+        dirVal: data ? data.weather.windDirection.value : DEFAULTS.EMPTY,
         isError: data ? isErrorWind(data.weather) : true
       },
       in: {
-        temp: data ? data.in.temperature.value : DEFAULT_EMPTY,
-        hum: data ? data.in.humidity.value : DEFAULT_EMPTY,
+        temp: data ? data.in.temperature.value : DEFAULTS.EMPTY,
+        hum: data ? data.in.humidity.value : DEFAULTS.EMPTY,
         isError: data ? isErrorTempHum(data.in) : true
       },
       out: {
-        temp: data ? data.out.temperature.value : DEFAULT_EMPTY,
-        hum: data ? data.out.humidity.value : DEFAULT_EMPTY,
+        temp: data ? data.out.temperature.value : DEFAULTS.EMPTY,
+        hum: data ? data.out.humidity.value : DEFAULTS.EMPTY,
         isError: data ? isErrorTempHum(data.out) : true
       }
     }
@@ -143,7 +137,7 @@ const isError = (data) => {
 
 const prepareDefaultAirPollutionForecast = () => {
   return {
-    date: DEFAULT_EMPTY,
+    date: DEFAULTS.EMPTY,
     isError: true,
     values: prepareDefaultAirPollutionForecastValues()
   }
@@ -153,9 +147,9 @@ const prepareDefaultAirPollutionForecastValues = () => {
   var arr = [];
   for (var i = 0; i < 12; i++) {
     arr.push({
-        date: DEFAULT_EMPTY,
-        caqi: DEFAULT_EMPTY,
-        caqiColor: DEFAULT_EMPTY
+        date: DEFAULTS.EMPTY,
+        caqi: DEFAULTS.EMPTY,
+        caqiColor: DEFAULTS.EMPTY
     });
 }
   return arr;
