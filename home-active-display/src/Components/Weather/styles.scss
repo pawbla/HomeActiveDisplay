@@ -7,13 +7,14 @@
     flex-flow: column nowrap;
     align-items: stretch;
     .top {
+        padding: 0px 10px;
         min-height: 60px;
         height: 60px;
         border-bottom: $border_size solid $border_colour;
         display: flex;
         justify-content: space-between;
+        align-items: baseline;
         .warning {
-            padding-right: 5px;
             color: yellow;
             font-size: 50px;
         }

@@ -1,0 +1,45 @@
+@import "../../vars";
+$menubar_h: 100px;
+$menubar_border: 4px;
+$menubar_h_b: ($menubar_h + $menubar_border) * -1;
+
+.menu {
+    width: 40px;
+    height: 40px;
+    padding-bottom: 8px;
+    div {
+        width: 40px;
+        height: 3px;
+        background-color: $main_colour;
+        border-radius: 10px;
+        margin: 10px 0;
+        transition: 0.5s;
+    }
+    .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-8px, 6px);
+        transform: rotate(-45deg) translate(-8px, 6px);
+    }
+    .bar2 {
+        opacity: 0;
+    }
+    .bar3 {
+        -webkit-transform: rotate(45deg) translate(-11px, -8x);
+        transform: rotate(45deg) translate(-11px, -11px);
+    }
+}
+.menuBar {
+    border: $menubar_border double $main_colour;
+    border-bottom: 0;
+    position: absolute;
+    bottom: $menubar_h_b;
+    left: 0px;
+    width: 99%;
+    height: $menubar_h;
+    z-index: 10;
+    background-color: black;
+    opacity: 0.85;
+    transition: 0.5s;
+}
+.show {
+    transform: translate(0px,$menubar_h_b);
+}
