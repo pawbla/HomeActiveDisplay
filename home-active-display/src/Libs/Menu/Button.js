@@ -25,7 +25,7 @@ function SimpleButton({component: Component, className, label, path,  ...props})
     return (
         <div className={className} onClick={onClick}>
             <Component {...props}/>
-            <div class="material-icons">{label}</div>
+            <div className="material-icons blabel">{label}</div>
         </div>
     );
 }

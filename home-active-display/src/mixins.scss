@@ -36,3 +36,22 @@
 @mixin small_name {
     font-size: 15px;
 }
+
+@mixin top {
+    padding: 0px 10px;
+    min-height: 60px;
+    height: 60px;
+    border-bottom: $border_size solid $border_colour;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+@mixin unselected_text {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}

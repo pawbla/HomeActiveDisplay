@@ -1,4 +1,6 @@
 @import "../../vars";
+@import "../../mixins";
+
 $menubar_h: 100px;
 $menubar_border: 4px;
 $menubar_h_b: ($menubar_h + $menubar_border) * -1;
@@ -76,8 +78,12 @@ $menubar_h_b: ($menubar_h + $menubar_border) * -1;
     align-items: center;
     padding-left: 10px;
     &:hover {
-        background-color: $main_colour;
-        color: black;
-        border-radius: 10px;
-      }
+      background-color: $main_colour;
+      color: black;
+      border-radius: 10px;
+    }
+}
+
+.blabel {
+    @include unselected_text;
 }

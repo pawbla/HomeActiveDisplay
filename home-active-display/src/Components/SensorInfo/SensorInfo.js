@@ -1,11 +1,13 @@
 import React from 'react';
-import {BackButton} from '../../Libs/Menu/Button';
-
+import './styles.scss';
+import TopComponent from './TopComponent';
+import MiddleComponent from './MiddleComponent';
 
 export default function SensorInfo(props) {
     return(
-        <div>
-            <BackButton />
+        <div className="sensorinfo">
+            <TopComponent />
+            <MiddleComponent />
         </div>
     );
 }
