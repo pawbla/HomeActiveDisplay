@@ -17,7 +17,7 @@ export default function TopComponent(props) {
             <div className="warning">
                 {props.isError ? <WarningAmberRoundedIcon sx={{ fontSize: 50 }} /> : null}
             </div>
-            <MenuBar show={isOpen}/>
+            <MenuBar show={isOpen} closePopup={props.closePopup} toggleMenu={toggleMenu}/>
         </div>
     );
 }

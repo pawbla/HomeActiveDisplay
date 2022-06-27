@@ -1,15 +1,12 @@
-import {sortByDate} from './utils';
+import {sortByDateDesc} from './utils';
 
-const HISTORY_HOURS = [1,3,6,9,12]
+const HISTORY_HOURS = [12,9,6,3,1]
 
 export function calculateHistory(historyArr, currentPressure) {
     let historyValues = [];
-    historyValues.push({
-        name: "now",
-        value: currentPressure
-    });
+
     if (historyArr.length > 0) {
-        let historyArrSorted = historyArr.sort(sortByDate);       
+        let historyArrSorted = historyArr.sort(sortByDateDesc);       
         HISTORY_HOURS.forEach(i => {
             historyValues.push(
                 {
@@ -19,6 +16,10 @@ export function calculateHistory(historyArr, currentPressure) {
             )
         })
     }
+    historyValues.push({
+        name: "now",
+        value: currentPressure
+    });
 
     return historyValues;
 }

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { getApi } from '../../Libs/RestApi/getApi';
+import { getApi } from '../../Libs/RestApi/apiCalls';
 
 export default function MiddleComponent(props) {
 

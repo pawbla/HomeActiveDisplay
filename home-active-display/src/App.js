@@ -4,8 +4,8 @@ import Weather from './Components/Weather/Weather';
 import SensorInfo from './Components/SensorInfo/SensorInfo';
 
 //Mocked service for testing purpose, remove when deployed for integration
-import { mockedBackend } from './Mocks/mockedBackend';
-mockedBackend();
+//import { mockedBackend } from './Mocks/mockedBackend';
+//mockedBackend();
 
 function App() {
   return (

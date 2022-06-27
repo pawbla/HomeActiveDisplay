@@ -1,0 +1,13 @@
+@import "../../vars";
+@import "../../mixins";
+
+.popup {
+    position: absolute;
+    top: 195px;
+    left: 177px;
+    background-color: black;
+    border: 5px ridge $main_colour;
+    padding: 20px 30px;
+    font-size: 30px;
+    @include unselected_text;
+}

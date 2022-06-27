@@ -3,23 +3,26 @@ import { useNavigate } from "react-router-dom";
 import './styles.scss';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-export function Button({component: Component, label, path,  ...props}) {
+export function Button({component: Component, label, path, onClick,  ...props}) {
     return(
-        <SimpleButton component={Component} className="mbutton" label={label} path={path} {...props}/>
+        <SimpleButton component={Component} label={label} path={path} exOnClick={onClick} {...props}/>
     )
 }
 
 export function BackButton() {
     return (
-        <SimpleButton component={ArrowBackIosIcon} className="bbutton" path="/" fontSize="large"/>
+        <SimpleButton component={ArrowBackIosIcon} className="bbutton" path="/"/>
     )
 }
 
-function SimpleButton({component: Component, className, label, path,  ...props}) {
+function SimpleButton({component: Component, className, label, path, exOnClick, ...props}) {
     const navigate = useNavigate();
 
     const onClick = () => {
-        navigate(path) 
+        exOnClick();
+        if (path) {
+            navigate(path)
+        } 
     }
 
     return (
@@ -29,3 +32,10 @@ function SimpleButton({component: Component, className, label, path,  ...props})
         </div>
     );
 }
+
+SimpleButton.defaultProps = {
+    exOnClick: () => {},
+    path: undefined,
+    className: "mbutton",
+    fontSize: "large"
+};

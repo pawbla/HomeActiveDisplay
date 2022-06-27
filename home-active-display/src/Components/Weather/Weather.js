@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './styles.scss';
-import { getApi } from '../../Libs/RestApi/getApi';
+import { getApi } from '../../Libs/RestApi/apiCalls';
 import TopComponent from './TopComponent';
 import MiddleComponent from './MiddleComponent';
 import BottomComponent from './BottomComponent';
 import {DEFAULTS} from './Constants';
+import Popup from '../../Libs/Popup/Popup';
 
 const url = "weather/measurements";
 const port = "8082"
@@ -16,30 +17,37 @@ export default function Weather(props) {
   const [response, setResponse] = useState(prepareValues(undefined));
 
   useEffect(() => {
-      const timer = setInterval(() => {
-      getResponse();
-      }, periodTime);
-      return () => clearInterval(timer);
-    }, []);
+    const timer = setInterval(() => {
+    getResponse();
+    }, periodTime);
+    return () => clearInterval(timer);
+  }, []);
 
-    const getResponse = async() => {
-      let response = await getApi(port, url, queryParams)
-      .then(json => {return json})
-      .catch(error => {console.log("ERROR" + error.message)});
-      setResponse(prepareValues(response));
-      }
+  const getResponse = async() => {
+    let response = await getApi(port, url, queryParams)
+    .then(json => {return json})
+    .catch(error => {console.log("ERROR" + error.message)});
+    setResponse(prepareValues(response));
+    }
 
-    return (
-        <WeatherContext values={response}/>
-    )
+  return (
+      <WeatherContext values={response}/>
+  )
 }
 
 function WeatherContext(props) {
+  const [isOffPopup, setOffPopup] = useState(false);
+
+  const showOffPopup = () => {
+    setOffPopup(true);
+  }
+
   return (
     <div className="weather">
-        <TopComponent isError={isError(props.values)}/>
+        <TopComponent isError={isError(props.values)} closePopup={showOffPopup}/>
         <MiddleComponent values={props.values.middle}/>
         <BottomComponent values={props.values} />
+        {isOffPopup ? <Popup text="Application is getting closed" /> : null}
     </div>
   )
 }

@@ -20,6 +20,26 @@ export const getApi = async (port, endpoint, queryParams) => {
     })
 }
 
+export const postApi = async (port, endpoint, body) => {
+  const url = `${localhost}${port}${apiUrl}${endpoint}`;
+  return await fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": localhost + port,
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Origin, Content-Type, X-Auth-Token"
+      },
+      body: JSON.stringify(body)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw (errorObj(response.status, response.statusText));
+      }
+      return response.json()          
+  })
+}
+
 const errorObj = (status, text) => {
   return {
     message: `Received response code: ${status} ${text}`,
