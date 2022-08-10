@@ -75,6 +75,8 @@ function SensorDetails(props) {
                 <DetailInfo name="Last measurement" value={props.item.date} />
                 <DetailInfo name="ResponseCode" value={props.item.responseCode} />
                 <DetailInfo name="Error message" value={props.item.errorMessage} />
+                <RequestCounter name="Daily:" counter={props.item.dailyCounter}/>
+                <RequestCounter name="Summarize:" counter={props.item.sumCounter}/>
             </div> : null
             }
         </div>
@@ -88,4 +90,23 @@ function DetailInfo(props) {
             {props.name}: {props.value}
         </div> : null
     )
+}
+
+function RequestCounter(props) {
+    return (
+        console.log(JSON.stringify(props)),
+        props.counter ?
+        <div className="reqCnt">
+           {props.name}
+           <ul>
+               <li>Requests: {props.counter.requests}</li>
+               <li>Errors: {props.counter.errors}</li>
+               <li>Errors[%]: {getPercent(props.counter.requests, props.counter.errors)}</li>
+            </ul>
+       </div> : null
+    )
+}
+
+const getPercent = (requests, errors) => {
+    return Math.round((errors * 100) / requests);
 }
