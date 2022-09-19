@@ -1,37 +1,32 @@
 import React, {useEffect, useState} from 'react';
 import './styles.scss';
-import { getApi } from '../../Libs/RestApi/apiCalls';
 import TopComponent from './TopComponent';
 import MiddleComponent from './MiddleComponent';
 import BottomComponent from './BottomComponent';
 import {DEFAULTS} from './Constants';
 import Popup from '../../Libs/Popup/Popup';
 
-const url = "weather/measurements";
-const port = "8082"
-const queryParams = "";
+import { useDispatch, useSelector } from 'react-redux';
+import {getWeather} from '../../features/fetchWeather'
+
 const periodTime = 10000;
 
 export default function Weather(props) {
 
-  const [response, setResponse] = useState(prepareValues(undefined));
+  const dispatch = useDispatch();
+
+  const {payload}  = useSelector((state) => state.fetchWeather)
 
   useEffect(() => {
+    dispatch(getWeather());
     const timer = setInterval(() => {
-    getResponse();
+    dispatch(getWeather());
     }, periodTime);
     return () => clearInterval(timer);
   }, []);
 
-  const getResponse = async() => {
-    let response = await getApi(port, url, queryParams)
-    .then(json => {return json})
-    .catch(error => {console.log("ERROR" + error.message)});
-    setResponse(prepareValues(response));
-    }
-
   return (
-      <WeatherContext values={response}/>
+      <WeatherContext values={prepareValues(payload)}/>
   )
 }
 

@@ -1,15 +1,17 @@
 import React from 'react';
 import './styles.scss';
 import { Button } from './Button';
-import { postApi } from '../RestApi/apiCalls';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-
+import { fetchWrapper } from '../../Libs/RestApi/restWrapper';
+import { endpoints } from '../../config';
+ 
 export default function MenuBar(props) {
-    const url = "monitoring/shutdown";
-    const port = "8085"
+    const port = endpoints.monitoring.port;
+    const apiVersion = endpoints.monitoring.shutdown.apiVersion
+    const uri = endpoints.monitoring.shutdown.uri
 
     const onClickOff = async() => {
-        await postApi(port, url, "")
+        await fetchWrapper.post(port, apiVersion, uri, "")
         .catch(error => {console.log("ERROR" + error.message)});
         props.closePopup();
         props.toggleMenu();

@@ -80,7 +80,7 @@ function AirPolutionForecast(props) {
     return (
         <div className="forecast">
           {
-            props.data.forecast.values.sort(sortByDate).slice(0,FORECAST_ITEM_NO).map((item, index) =>  
+            [...props.data.forecast.values].sort(sortByDate).slice(0,FORECAST_ITEM_NO).map((item, index) =>  
               <CaqiForecastItem key={index} item={item}/>)
           }
         </div>

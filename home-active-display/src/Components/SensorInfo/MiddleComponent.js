@@ -1,29 +1,24 @@
 import React, {useEffect, useState} from 'react';
-import { getApi } from '../../Libs/RestApi/apiCalls';
+import { useDispatch, useSelector } from 'react-redux';
+import {getSensorInfo} from '../../features/fetchSensorInfo';
 
 export default function MiddleComponent(props) {
 
-    const url = "weather/status";
-    const port = "8082"
-    const queryParams = "";
     const periodTime = 10 * 1000;
 
-    const [response, setResponse] = useState({});
+    const dispatch = useDispatch();
+
     const [selectedItem, setSelectedItem] = useState();
 
+    const {payload}  = useSelector((state) => state.fetchSensorInfo)
+
   useEffect(() => {
-      getResponse();
+      dispatch(getSensorInfo());
       const timer = setInterval(() => {
-      getResponse();
+      dispatch(getSensorInfo());
       }, periodTime);
       return () => clearInterval(timer);
     }, []);
-
-    const getResponse = async() => {
-      await getApi(port, url, queryParams)
-      .then(json => {setResponse(json)})
-      .catch(error => {console.log("ERROR" + error.message)});
-    }
 
     const onClickSelectItem = (item) => {
         setSelectedItem(item);
@@ -35,8 +30,8 @@ export default function MiddleComponent(props) {
 
     return(
         <div className="middle">
-            <SensorsList connectors={response.connectors} onClick={onClickSelectItem}/>
-            <SensorDetails item={selectItem(response.connectors)}/>
+            <SensorsList connectors={payload.connectors} onClick={onClickSelectItem}/>
+            <SensorDetails item={selectItem(payload.connectors)}/>
         </div>
     );
 }
@@ -94,7 +89,6 @@ function DetailInfo(props) {
 
 function RequestCounter(props) {
     return (
-        console.log(JSON.stringify(props)),
         props.counter ?
         <div className="reqCnt">
            {props.name}
