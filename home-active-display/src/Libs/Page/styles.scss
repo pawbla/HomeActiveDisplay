@@ -1,0 +1,15 @@
+@import "../../mixins";
+@import "../../vars";
+
+.mainPage {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    .top {
+        @include top;
+        .bbutton {
+            margin-top: 8px;
+        }
+    }
+}

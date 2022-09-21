@@ -1,13 +1,12 @@
 import React from 'react';
 import './styles.scss';
-import TopComponent from './TopComponent';
 import MiddleComponent from './MiddleComponent';
+import mainPage from '../../Libs/Page/MainPage';
 
-export default function SensorInfo(props) {
+function SensorInfo(props) {
     return(
-        <div className="sensorinfo">
-            <TopComponent />
-            <MiddleComponent />
-        </div>
+        <MiddleComponent />
     );
 }
+
+export default mainPage(SensorInfo);

@@ -2,6 +2,7 @@ import './App.scss';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Weather from './Components/Weather/Weather';
 import SensorInfo from './Components/SensorInfo/SensorInfo';
+import SystemPage from './Components/System/SystemPage';
 
 //Mocked service for testing purpose, remove when deployed for integration
 import { mockedBackend } from './Mocks/mockedBackend';
@@ -14,11 +15,10 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Weather />} />
           <Route exact path="/sensorInfo" element={<SensorInfo />} />
+          <Route exact path="/system" element={<SystemPage />} />
         </Routes>  
       </div>
     </BrowserRouter>
-
-    
   );
 }
 

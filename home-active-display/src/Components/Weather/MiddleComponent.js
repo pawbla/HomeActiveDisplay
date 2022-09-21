@@ -48,7 +48,7 @@ import pic44  from '../../assets/images/weatherIcons/44.png';
 
 import compass  from '../../assets/images/utils/compass.png';
 
-const CHART_OFFSET = 5;
+const CHART_OFFSET = 1;
 
 export default function MiddleComponent(props) {
     return(

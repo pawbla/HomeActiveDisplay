@@ -1,76 +1,64 @@
 @import "../../vars";
 @import "../../mixins";
 
-.sensorinfo {
-    height: 100%;
+.sensorInfoMain {
+    flex-grow: 4;
     display: flex;
-    flex-flow: column nowrap;
-    align-items: stretch;
-    .top {
-        @include top;
-        .bbutton {
-            margin-top: 8px;
+    flex-flow: row nowrap;
+    font-family: monospace;
+    .slist {
+        flex-basis: 300px;
+        padding-top: 15px;
+        display: flex;
+        flex-flow: column nowrap;
+        row-gap: 10px;
+        .item {
+            margin: 0px 20px;
+            border: 2px solid $main_colour;
+            height: 50px;
+            border-radius: 4px;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            .circle {
+                height: 26px;
+                width: 26px;
+                border: 2px solid $main_colour;
+                border-radius: 50%;
+                margin-left: 20px;
+                margin-right: 10px;
+            }
+            .text {
+                font-size: 22px;
+                padding-bottom: 5px;
+                @include unselected_text;
+            }
+            &:hover {
+                background-color: $main_colour;
+                color: black;
+            }
         }
     }
-    .middle {
-        flex-grow: 4;
+    .sdetails {
         display: flex;
-        flex-flow: row nowrap;
-        font-family: monospace;
-        .slist {
-            flex-basis: 300px;
-            padding-top: 15px;
+        flex-grow: 2;
+        width: 500px;
+        &>div {
+            flex-grow: 1;
+            margin: 15px 20px;
+            padding: 10px 15px;
+            border: 2px solid $main_colour;
+            border-radius: 2px;
             display: flex;
             flex-flow: column nowrap;
-            row-gap: 10px;
-            .item {
-                margin: 0px 20px;
-                border: 2px solid $main_colour;
-                height: 50px;
-                border-radius: 4px;
-                display: flex;
-                flex-flow: row nowrap;
-                align-items: center;
-                justify-content: flex-start;
-                .circle {
-                    height: 26px;
-                    width: 26px;
-                    border: 2px solid $main_colour;
-                    border-radius: 50%;
-                    margin-left: 20px;
-                    margin-right: 10px;
-                }
-                .text {
-                    font-size: 22px;
-                    padding-bottom: 5px;
-                    @include unselected_text;
-                }
-                &:hover {
-                    background-color: $main_colour;
-                    color: black;
-                }
+            font-size: 15px;
+            &>div:first-child {
+                font-size: 25px;
             }
-        }
-        .sdetails {
-            display: flex;
-            flex-grow: 2;
-            width: 500px;
-            &>div {
-                flex-grow: 1;
-                margin: 15px 20px;
-                padding: 10px 15px;
-                border: 2px solid $main_colour;
-                border-radius: 2px;
-                display: flex;
-                flex-flow: column nowrap;
-                font-size: 15px;
-                &>div:first-child {
-                    font-size: 25px;
-                }
-            };
-            ul {
-                margin: 0px;
-            }
+        };
+        ul {
+            margin: 0px;
         }
     }
 }

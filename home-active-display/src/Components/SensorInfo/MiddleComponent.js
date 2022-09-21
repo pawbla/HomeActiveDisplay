@@ -29,7 +29,7 @@ export default function MiddleComponent(props) {
     }
 
     return(
-        <div className="middle">
+        <div className="sensorInfoMain">
             <SensorsList connectors={payload.connectors} onClick={onClickSelectItem}/>
             <SensorDetails item={selectItem(payload.connectors)}/>
         </div>

@@ -1,0 +1,78 @@
+@import "../../vars";
+@import "../../mixins";
+
+.systemPageMain {
+    flex-grow: 4;
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: monospace;
+    .m_menu {
+        flex-basis: 300px;
+        padding-top: 15px;
+        display: flex;
+        flex-flow: column nowrap;
+        row-gap: 10px;
+        .m_button {
+            margin: 0px 20px;
+            border: 2px solid $main_colour;
+            height: 50px;
+            border-radius: 4px;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            &>div:first-child {
+                margin: 0px 8px;
+            }
+            &>div:last-child {
+                font-size: 22px;
+                padding-bottom: 5px;
+                @include unselected_text;
+            }
+            &:hover {
+                background-color: gray;
+            }
+        }
+        .m_button_selected {
+            background-color: $main_colour;
+            color: black; 
+            margin-right: 0px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            pointer-events: none;
+        }
+        .m_button_locked {
+            border-color: gray;
+            pointer-events: none;
+            color: gray;
+        }
+    }
+    .m_info {
+        display: flex;
+        flex-grow: 2;
+        width: 500px; 
+        .m_details {
+            height: 364px;
+            flex-grow: 1;
+            margin: 15px 20px;
+            padding: 10px 15px;
+            margin-left: 0;
+            border: 2px solid $main_colour;
+            overflow-y: auto;
+            .m_item {
+                display: flex;
+                flex-flow: column nowrap;
+                margin-bottom: 10px;
+            }
+            .m_title {
+                font-size: 20px;
+            }
+            .m_data {
+                font-size: 15px;
+            }
+            .m_error {
+                color: red;
+            }
+        }       
+    }
+}

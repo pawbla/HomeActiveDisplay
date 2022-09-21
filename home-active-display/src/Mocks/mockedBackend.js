@@ -1,9 +1,11 @@
 import {weatherResp} from './weatherResponse'
 import {sensorInfoResp} from './sensorInfoResponse'
+import {monitoringResp} from './monitoringResponse'
 
 const weather_endpoint = "/weather/measurements"
 const sensor_info_endpoint = "/weather/status"
 const shutdown_endpoint = "/monitoring/shutdown"
+const monitoring_endpoint = "/monitoring/status"
 
 export function mockedBackend() {
     window.fetch = function (url, data) {
@@ -17,6 +19,9 @@ export function mockedBackend() {
                 } else if (url.endsWith(sensor_info_endpoint)) {
                     console.log("== MOCKED RESPONSE == Sensor Info");
                     resolve({ ok: true, json: () => sensorInfoResp});
+                } else if (url.endsWith(monitoring_endpoint)) {
+                    console.log("== MOCKED RESPONSE == Monitoring");
+                    resolve({ ok: true, json: () => monitoringResp});
                 } else if (url.endsWith(shutdown_endpoint)) {
                     console.log("== MOCKED RESPONSE == Shutdown request");
                     resolve({ ok: true, json: () => {}});
