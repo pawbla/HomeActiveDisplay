@@ -179,6 +179,18 @@ export const weatherResp = {"airPolution":{
         "date":"10.04 20:38",
         "isError":false,
         "value":"457"},
+      "isPrecipation": {
+        "date": "10.03 22:34",
+        "isError": false,
+        "value": false},
+      "precipationType": {
+        "date": "10.03 22:34",
+        "isError": false,
+        "value": ""},  
+      "isDayTime": {
+        "date": "10.03 22:34",
+        "isError": false,
+        "value": true},      
       "windDirectionDeg":{
         "date":"10.04 20:38",
         "isError":false,
@@ -194,7 +206,7 @@ export const weatherResp = {"airPolution":{
       "cloudCover":{
         "date":"10.04 20:38",
         "isError":false,
-        "value":"100"},
+        "value":"77"},
       "uvIndexDescription":{
         "date":"10.04 20:38",
         "isError":false,

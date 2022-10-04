@@ -44,11 +44,48 @@
                     .unit {
                         @include small_unit;
                         padding-bottom: 22px;
-                        padding-top: 25px;
+                        padding-top: 30px;
                     }
                 }
                 .graph {
                     height: 50%;
+                }
+            }
+            .leftSmall {
+                display: flex;
+                flex-flow: row nowrap; 
+                align-items: stretch;
+                & > div:first-child {
+                    border-right: $border_size solid $border_colour;
+                }
+                .items {
+                    width: 50%;
+                    position: relative;
+                    display: flex;
+                    flex-flow: column nowrap; 
+                    align-items: stretch;
+                    padding-top: 30px;
+                    .clouds {
+                        display: flex;
+                        flex-flow: row nowrap;  
+                        justify-content: center;
+                    }
+                    .value {
+                        @include ms_value;
+                        text-align: center; 
+                        padding-top: 10px;
+                        height: 50px;
+                    }
+                    .unit {
+                        @include small_unit;
+                        height: 48px;
+                        padding-top: 14px;
+                    }
+                    .text {
+                        height: 35px;
+                        font-size: 20px;
+                        text-align: center;
+                    }
                 }
             }
         }

@@ -53,7 +53,7 @@ const CHART_OFFSET = 1;
 export default function MiddleComponent(props) {
     return(
         <div className="middle">
-            <LeftSide pressure={props.values.pressure}/>
+            <LeftSide pressure={props.values.pressure} uv={props.values.uv} cloud={props.values.cloud}/>
             <CenterSide weather={props.values.weather} wind={props.values.wind}/>
             <RightSide in={props.values.in} out={props.values.out}/>
         </div>
@@ -63,7 +63,7 @@ export default function MiddleComponent(props) {
 function LeftSide(props) {
     return (
         <div className="left">
-            <Empty />
+            <LeftSmall uv={props.uv} cloud={props.cloud}/>
             <PressureComponent pressure={props.pressure}/>
         </div>
     )
@@ -83,6 +83,15 @@ function RightSide(props) {
         <div className="right">
             <TempHumComponent label={LABELS.IN} temp={props.in.temp} hum={props.in.hum} isError={props.in.isError}/>
             <TempHumComponent label={LABELS.OUT} temp={props.out.temp} hum={props.out.hum} isError={props.out.isError}/>
+        </div>
+    )
+}
+
+function LeftSmall(props) {
+    return (
+        <div className="leftSmall">
+            <UVComponent uv={props.uv}/>
+            <CloudsComponent cloud={props.cloud}/>
         </div>
     )
 }
@@ -112,10 +121,10 @@ function WindComponent(props) {
                 <div className="unit">km/h</div>
             </div>
             <div className="pic">
-                <img src={require(`../../assets/images/utils/compass.png`).default} alt="Brak obrazka"/>
+                <img src={require(`../../assets/images/utils/compass.png`)} alt="Brak obrazka"/>
                 <div className="value">{props.wind.dirVal}</div>
                 <div className="indicator" style={{ transform: 'rotate(' + props.wind.dirDeg + 'deg)' }}>
-                    <img src={require(`../../assets/images/utils/indicator.png`).default} alt="Brak obrazka"/>
+                    <img src={require(`../../assets/images/utils/indicator.png`)} alt="Brak obrazka"/>
                 </div>
             </div>
             
@@ -127,16 +136,37 @@ function WeatherComponent(props) {
     return (
         <div className="weather">
             <Label label={LABELS.WEATHER} isError={props.isError}/>
-            {props.icon === DEFAULTS.EMPTY? null : <img src={require(`../../assets/images/weatherIcons/${props.icon}.png`).default} alt={DEFAULTS.EMPTY}/>}
+            {props.icon === DEFAULTS.EMPTY? null : <img src={require(`../../assets/images/weatherIcons/${props.icon}.png`)} alt={DEFAULTS.EMPTY}/>}
             <div className="text">{props.text}</div>
         </div>
     )
 }
 
-function Empty() { //Rename if needed
+function CloudsComponent(props) {
     return (
-        <div>
-            
+        <div className="items">
+            <Label label={LABELS.CLOUDS} isError={props.isError}/>
+            <div className="clouds">
+                <div className="value">{props.cloud.cover}</div>
+                <div className="unit">%</div>
+            </div>
+            <div className="text">
+                {props.cloud.ceiling}
+            </div>
+        </div>
+    )
+}
+
+function UVComponent(props) {
+    return (
+        <div className="items">
+            <Label label={LABELS.UV} isError={props.isError}/>
+            <div className="value" style={{color: props.uv.colour }}>
+                {props.uv.value}
+            </div>
+            <div className="text">
+                {props.uv.text}
+            </div>
         </div>
     )
 }

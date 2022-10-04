@@ -10,6 +10,8 @@ export const LABELS = {
     CAQI: "CAQI",
     PM_10: "PM10",
     PM_25: "PM25",
+    CLOUDS: "Clouds",
+    UV: "UV Index",
     PERCENT_UNIT: "%"
 };
 

@@ -5,7 +5,7 @@ export const fetchWrapper = {
     delete: request('DELETE')
 };
 
-const LOCALHOST = "localhost";
+const LOCALHOST = "http://localhost";
 const apiUrl = "api";
 
 function request(method) {

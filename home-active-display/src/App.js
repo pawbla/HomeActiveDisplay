@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" element={<Weather />} />
           <Route exact path="/sensorInfo" element={<SensorInfo />} />
           <Route exact path="/system" element={<SystemPage />} />
-        </Routes>  
+        </Routes>
       </div>
     </BrowserRouter>
   );

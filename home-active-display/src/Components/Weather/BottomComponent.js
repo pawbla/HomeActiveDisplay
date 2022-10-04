@@ -24,8 +24,8 @@ function SunRiseSet(props) {
   return (
     <div className="sunriseset">  
       <Label label={LABELS.SUN} isError={props.day.isError}/>
-      <SunItem time={props.day.sunrise} pic={require(`../../assets/images/sunIcons/sunrise.png`).default}/>
-      <SunItem time={props.day.sunset} pic={require(`../../assets/images/sunIcons/sunset.png`).default}/>
+      <SunItem time={props.day.sunrise} pic={require(`../../assets/images/sunIcons/sunrise.png`)}/>
+      <SunItem time={props.day.sunset} pic={require(`../../assets/images/sunIcons/sunset.png`)}/>
     </div>
   )
 }
@@ -43,7 +43,7 @@ function MoonInfo(props) {
   return (
     <div className="moon">
        <Label label={LABELS.MOON} isError={props.moon.isError}/>
-       <img src={require(`../../assets/images/moon/moon_${props.moon.icon}.png`).default} alt={DEFAULTS.EMPTY}/>
+       <img src={require(`../../assets/images/moon/moon_${props.moon.icon}.png`)} alt={DEFAULTS.EMPTY}/>
        <div className="text">
          {props.moon.text}
        </div>

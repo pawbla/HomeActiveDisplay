@@ -85,6 +85,17 @@ const prepareValues = (data) => {
         dirVal: data ? data.weather.windDirection.value : DEFAULTS.EMPTY,
         isError: data ? isErrorWind(data.weather) : true
       },
+      cloud: {
+        cover: data ? data.weather.cloudCover.value : DEFAULTS.EMPTY,
+        ceiling: data ? prepareCeilingText(data.weather.ceiling.value) : DEFAULTS.EMPTY,
+        isError: data ? isErrorCloud(data.weather) : true
+      },
+      uv: {
+        value: data ? data.weather.uvIndexValue.value : DEFAULTS.EMPTY,
+        colour: data ? data.weather.uvIndexColor.value : DEFAULTS.EMPTY,
+        text: data ? data.weather.uvIndexDescription.value : DEFAULTS.EMPTY,
+        isError: data ? isErrorUV(data.weather) : true
+      },
       in: {
         temp: data ? data.in.temperature.value : DEFAULTS.EMPTY,
         hum: data ? data.in.humidity.value : DEFAULTS.EMPTY,
@@ -118,6 +129,14 @@ const isErrorWeather = (weather) => {
 
 const isErrorWind = (weather) => {
   return (weather.windSpeed.isError || weather.windDirectionDeg.isError || weather.windDirection.isError);
+}
+
+const isErrorUV = (weather) => {
+  return (weather.uvIndexDescription.isError || weather.uvIndexColor.isError || weather.uvIndexValue.isError);
+}
+
+const isErrorCloud = (weather) => {
+  return (weather.cloudCover.isError || weather.ceiling.isError);
 }
 
 const isErrorTempHum = (data) => {
@@ -160,4 +179,14 @@ const prepareDefaultAirPollutionForecastValues = () => {
 
 const prepareIconNo = (iconNo) => {
   return  iconNo <= 9 ? "0"+iconNo : iconNo;
+}
+
+const prepareCeilingText = (ceiling) => {
+  if (ceiling < 2000) {
+    return "Niskie";
+  } else if (ceiling > 7000) {
+    return "Wysokie";
+  } else {
+    return "Średnie";
+  }
 }
