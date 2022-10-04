@@ -39,7 +39,7 @@ function WeatherContext(props) {
 
   return (
     <div className="weather">
-        <TopComponent isError={isError(props.values)} closePopup={showOffPopup}/>
+        <TopComponent isError={isError(props.values)} closePopup={showOffPopup} values={props.values.top}/>
         <MiddleComponent values={props.values.middle}/>
         <BottomComponent values={props.values} />
         {isOffPopup ? <Popup text="Application is getting closed" /> : null}

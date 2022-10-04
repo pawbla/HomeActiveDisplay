@@ -8,7 +8,14 @@
     align-items: stretch;
     .top {
         @include top;
+        .dateTime {
+            @include ms_value;
+            height: 100%;
+            margin-left: 309px;
+            padding-top: 5px;
+        }
         .warning {
+            margin-left: auto;
             color: yellow;
             font-size: 50px;
         }

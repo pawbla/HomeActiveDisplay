@@ -6,7 +6,7 @@ import SystemPage from './Components/System/SystemPage';
 
 //Mocked service for testing purpose, remove when deployed for integration
 import { mockedBackend } from './Mocks/mockedBackend';
-mockedBackend();
+//mockedBackend();
 
 function App() {
   return (

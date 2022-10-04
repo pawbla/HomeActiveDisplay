@@ -6,6 +6,7 @@ $menubar_border: 4px;
 $menubar_h_b: ($menubar_h + $menubar_border) * -1;
 
 .menu {
+    padding-top: 5px;
     width: 40px;
     height: 40px;
     padding-bottom: 8px;

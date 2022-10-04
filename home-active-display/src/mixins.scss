@@ -43,8 +43,8 @@
     height: 60px;
     border-bottom: $border_size solid $border_colour;
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 @mixin unselected_text {
