@@ -11,7 +11,7 @@ export function Button({component: Component, label, path, onClick,  ...props}) 
 
 export function BackButton() {
     return (
-        <SimpleButton component={ArrowBackIosIcon} className="bbutton" path="/"/>
+        <SimpleButton component={ArrowBackIosIcon} className="bbutton" path="/weather"/>
     )
 }
 

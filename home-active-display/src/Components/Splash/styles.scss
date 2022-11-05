@@ -1,0 +1,23 @@
+.splash {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    & > div {
+        font-family: monospace;
+        font-size: 20px;
+    }
+    .splashWarning {
+        color: yellow;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        margin: 10px;
+    }
+    
+}
+
+.circular {
+    position: absolute;
+}

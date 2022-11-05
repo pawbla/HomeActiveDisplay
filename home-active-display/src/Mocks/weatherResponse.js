@@ -177,7 +177,7 @@ export const weatherResp = {"airPolution":{
     "weather":{
       "ceiling":{
         "date":"10.04 20:38",
-        "isError":false,
+        "isError":true,
         "value":"457"},
       "isPrecipation": {
         "date": "10.03 22:34",

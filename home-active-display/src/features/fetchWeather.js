@@ -15,7 +15,8 @@ const weatherSlice = createSlice({
     name: 'fetchWeather',
     initialState: {
       loading: true,
-      payload: undefined
+      payload: undefined,
+      isReady: false
     },
     reducers: {},
     extraReducers: {
@@ -24,6 +25,7 @@ const weatherSlice = createSlice({
         },
         [getWeather.fulfilled]: (state, { payload }) => {
           state.loading = false
+          state.isReady = true
           state.payload = payload
         },
         [getWeather.rejected]: (state, {error}) => {

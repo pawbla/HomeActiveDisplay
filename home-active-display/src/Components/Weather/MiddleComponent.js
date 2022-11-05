@@ -145,7 +145,7 @@ function WeatherComponent(props) {
 function CloudsComponent(props) {
     return (
         <div className="items">
-            <Label label={LABELS.CLOUDS} isError={props.isError}/>
+            <Label label={LABELS.CLOUDS} isError={props.cloud.isError}/>
             <div className="clouds">
                 <div className="value">{props.cloud.cover}</div>
                 <div className="unit">%</div>
@@ -160,7 +160,7 @@ function CloudsComponent(props) {
 function UVComponent(props) {
     return (
         <div className="items">
-            <Label label={LABELS.UV} isError={props.isError}/>
+            <Label label={LABELS.UV} isError={props.uv.isError}/>
             <div className="value" style={{color: props.uv.colour }}>
                 {props.uv.value}
             </div>
