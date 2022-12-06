@@ -1,3 +1,12 @@
+const getRefDate = (i) => {
+  let dateTime = new Date();
+  dateTime.setMinutes(0);
+  dateTime.setSeconds(0)
+  dateTime.setMilliseconds(0);
+  dateTime.setHours(dateTime.getHours() - i);
+  return dateTime.toISOString();
+} 
+
 export const weatherResp = {"airPolution":{
     "pm25percent":{
       "date":"10.04 20:38",
@@ -241,99 +250,99 @@ export const weatherResp = {"airPolution":{
       "isError": false,
       "pressure": [
           {
-              "date": "2019-10-04T16:00:00.000Z",
+              "date": getRefDate(24),
               "value": "1016"
           },
           {
-              "date": "2019-10-04T17:00:00.000Z",
+              "date": getRefDate(23),
               "value": "1017"
           },
           {
-              "date": "2019-10-04T18:00:00.000Z",
+              "date": getRefDate(22),
               "value": "1018"
           },
           {
-              "date": "2019-10-04T19:00:00.000Z",
+              "date": getRefDate(21),
               "value": "1019"
           },
           {
-              "date": "2019-10-04T20:00:00.000Z",
+              "date": getRefDate(20),
               "value": "1020"
           },
           {
-              "date": "2019-10-04T21:00:00.000Z",
+              "date": getRefDate(19),
               "value": "1021"
           },
           {
-              "date": "2019-10-04T22:00:00.000Z",
+              "date": getRefDate(18),
               "value": "1022"
           },
           {
-              "date": "2019-10-04T23:00:00.000Z",
+              "date": getRefDate(17),
               "value": "1023"
           },
           {
-              "date": "2019-10-05T00:00:00.000Z",
+              "date": getRefDate(16),
               "value": "1024"
           },
           {
-              "date": "2019-10-05T01:00:00.000Z",
+              "date": getRefDate(15),
               "value": "1001"
           },
           {
-              "date": "2019-10-05T02:00:00.000Z",
+              "date": getRefDate(14),
               "value": "1002"
           },
           {
-              "date": "2019-10-05T03:00:00.000Z",
+              "date": getRefDate(13),
               "value": "1003"
           },
           {
-              "date": "2019-10-05T04:00:00.000Z",
+              "date": getRefDate(12),
               "value": "1004"
           },
           {
-              "date": "2019-10-05T05:00:00.000Z",
+              "date": getRefDate(11),
               "value": "1005"
           },
           {
-              "date": "2019-10-05T06:00:00.000Z",
+              "date":  getRefDate(10),
               "value": "1006"
           },
           {
-              "date": "2019-10-05T07:00:00.000Z",
+              "date":  getRefDate(9),
               "value": "1007"
           },
           {
-              "date": "2019-10-05T08:00:00.000Z",
+              "date":  getRefDate(8),
               "value": "1008"
           },
           {
-              "date": "2019-10-05T09:00:00.000Z",
+              "date":  getRefDate(7),
               "value": "1009"
           },
           {
-              "date": "2019-10-05T10:00:00.000Z",
+              "date":  getRefDate(6),
               "value": "1010"
           },
           {
-              "date": "2019-10-05T11:00:00.000Z",
+              "date":  getRefDate(5),
               "value": "1011"
           },
           {
-              "date": "2019-10-05T12:00:00.000Z",
+              "date":  getRefDate(4),
               "value": "1012"
           },
           {
-              "date": "2019-10-05T13:00:00.000Z",
+              "date":  getRefDate(3),
               "value": "1013"
           },
           {
-              "date": "2019-10-05T14:00:00.000Z",
+              "date":  getRefDate(2),
               "value": "1014"
           },
           {
-              "date": "2019-10-05T15:00:00.000Z",
+              "date":  getRefDate(1),
               "value": "1015"
           }
       ]
@@ -363,4 +372,6 @@ export const weatherResp = {"airPolution":{
         "value":"95"}
     }
   }
+
+ 
   

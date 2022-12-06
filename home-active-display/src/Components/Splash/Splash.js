@@ -12,7 +12,7 @@ import pic01  from '../../assets/images/splash/splash.png';
 export default function Splash(props) {
 
     const periodTime = 5000;
-    const ERROR_INDICATION_TIMEOUT_MINS = 2;
+    const ERROR_INDICATION_TIMEOUT_MINS = 15;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
