@@ -1,7 +1,8 @@
 export const sensorInfoResp = {
     "connectors":[
       {
-        "date":"10.04 20:38",
+        "date": "2023-01-11T19:06:13Z",
+        "okResponseDate": "2023-01-11T19:06:13Z",
         "isError":false,
         "provider":"Internal DHT22",
         "name":"internal",
@@ -9,7 +10,8 @@ export const sensorInfoResp = {
         "errorMessage":"",
         "responseCode":200
       },{
-        "date":"10.04 20:38",
+        "date": "2023-01-11T19:06:13Z",
+        "okResponseDate": "2023-01-11T19:06:13Z",
         "isError":false,
         "provider":"AccuWeather",
         "name":"accuweather",
@@ -25,7 +27,8 @@ export const sensorInfoResp = {
           "errors": 3
         }
       },{
-        "date":"10.04 20:38",
+        "date": "2023-01-11T19:06:13Z",
+        "okResponseDate": "2023-01-11T19:06:13Z",
         "isError":false,
         "provider":"Sunrise Sunset",
         "name":"sun",
@@ -41,7 +44,8 @@ export const sensorInfoResp = {
           "errors": 5
         }
       },{
-        "date":"10.04 20:38",
+        "date": "2023-01-11T19:06:13Z",
+        "okResponseDate": "2023-01-12T19:06:13Z",
         "isError":true,
         "provider":"AirLy",
         "name":"airLy",

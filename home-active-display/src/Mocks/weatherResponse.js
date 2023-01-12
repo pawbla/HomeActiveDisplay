@@ -9,35 +9,27 @@ const getRefDate = (i) => {
 
 export const weatherResp = {"airPolution":{
     "pm25percent":{
-      "date":"10.04 20:38",
       "isError":false,
       "value":"68"},
     "pm10percent":{
-      "date":"10.04 20:38",
       "isError":false,
       "value":"62"},
     "pm25":{
-      "date":"10.04 20:38",
       "isError":false,
       "value":"17"},
     "pm1":{
-      "date":"10.04 20:38",
       "isError":false,
       "value":"13"},
     "caqiColor":{
-      "date":"10.04 20:38",
       "isError":false,
       "value":"#D1CF1E"},
     "caqi":{
-      "date":"10.04 20:38",
       "isError":true,
       "value":"31"},
     "pm10":{
-      "date":"10.04 20:38",
       "isError":false,
       "value":"31"},
     "forecast": {
-      "date": "10.04 20:38",
       "isError": false,
       "values": [
         {
@@ -165,88 +157,68 @@ export const weatherResp = {"airPolution":{
   },
   "moon":{
     "text":{
-      "date":"2000-00-00",
       "isError":false,
       "value":"Przybywający sierp"},
     "picture":{
-      "date":"2000-00-00",
       "isError":false,
       "value":"1"}
     },
     "in":{
       "temperature":{
-        "date":"10.04 20:38",
         "isError":true,
         "value":"1"},
       "humidity":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"35"}
     },
     "weather":{
       "ceiling":{
-        "date":"10.04 20:38",
         "isError":true,
         "value":"457"},
       "isPrecipation": {
-        "date": "10.03 22:34",
         "isError": false,
         "value": false},
       "precipationType": {
-        "date": "10.03 22:34",
         "isError": false,
         "value": ""},  
       "isDayTime": {
-        "date": "10.03 22:34",
         "isError": false,
         "value": true},      
       "windDirectionDeg":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"45"},
       "weatherIcon":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"7"},
       "visibility":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"10"},
       "cloudCover":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"77"},
       "uvIndexDescription":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"Niska"},
       "uvIndexColor":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"#ffc800"},
       "pressure":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"1007"},
       "windDirection":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"NE"},
       "windSpeed":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"18"},
       "uvIndexValue":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"7"},
       "weatherText":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"Czesciowo slonecznie "}
     },
     "history": {
-      "date": "05.05 17:17",
       "isError": false,
       "pressure": [
           {
@@ -349,25 +321,20 @@ export const weatherResp = {"airPolution":{
   },
     "sun":{
       "dayLength":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"11:23"},
       "set":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"18:10"},
       "rise":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"06:46"}
     },
     "out":{
       "temperature":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"9"},
       "humidity":{
-        "date":"10.04 20:38",
         "isError":false,
         "value":"95"}
     }

@@ -59,7 +59,8 @@ const setIsErrorInfo = (isError) => {
     return isError ? "red" : "green";
 }
 
-function SensorDetails(props) {
+function SensorDetails(props) {  
+    
     return (
         <div className="sdetails">
             { props.item ? 
@@ -67,8 +68,9 @@ function SensorDetails(props) {
                 <div>{props.item.name}</div>
                 <DetailInfo name="Provider" value={props.item.provider} />
                 <DetailInfo name="Link" value={props.item.link} />
-                <DetailInfo name="Last measurement" value={props.item.date} />
-                <DetailInfo name="ResponseCode" value={props.item.responseCode} />
+                <DetailInfo name="Response Code" value={props.item.responseCode} />
+                <DetailInfo name="Response Date" value={new Date(props.item.date).toLocaleString()} />
+                <DetailInfo name="Ok Response Date" value={new Date(props.item.okResponseDate).toLocaleString()} />
                 <DetailInfo name="Error message" value={props.item.errorMessage} />
                 <RequestCounter name="Daily:" counter={props.item.dailyCounter}/>
                 <RequestCounter name="Summarize:" counter={props.item.sumCounter}/>
