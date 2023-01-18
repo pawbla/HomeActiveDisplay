@@ -166,7 +166,7 @@ export const weatherResp = {"airPolution":{
     "in":{
       "temperature":{
         "isError":true,
-        "value":"1"},
+        "value":"1.9"},
       "humidity":{
         "isError":false,
         "value":"35"}
@@ -333,7 +333,7 @@ export const weatherResp = {"airPolution":{
     "out":{
       "temperature":{
         "isError":false,
-        "value":"9"},
+        "value":"9.2"},
       "humidity":{
         "isError":false,
         "value":"95"}

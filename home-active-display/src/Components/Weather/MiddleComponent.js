@@ -96,13 +96,16 @@ function LeftSmall(props) {
     )
 }
 
-function TempHumComponent(props) {
+function TempHumComponent(props) { //
     return (
         <div>
            <Label label={props.label} isError={props.isError}/>
            <div className="temp">
-                <div className="value">{props.temp}</div>
-            <div className="unit">&deg;C</div>
+            <div className="value">{props.temp.split(".")[0]}</div>
+            <div className="unitdecimal">
+                <div className="unit">&deg;C </div>
+                <div className="decimal">{props.temp.split(".")[1]}</div>
+            </div>
             </div>
            <div className="hum">
                 <div className="value">{props.hum}</div>

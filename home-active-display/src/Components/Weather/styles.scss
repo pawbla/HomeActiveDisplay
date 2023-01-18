@@ -192,13 +192,21 @@
                         @include big_value;
                         align-self: flex-start;
                         padding-top: 25px;
-                       
                     }
-                    .unit {
-                        @include big_unit;
+                    .unitdecimal {
                         align-self: flex-start;
                         padding-top: 25px;
+                        .unit {
+                            align-self: flex-start;
+                            @include big_unit;
+                        }
+                        .decimal {
+                            @include small_value;
+                            text-align: center;
+                            font-size: 50px;
+                        }
                     }
+
                 }
                 .hum {
                     color: $humidity_colour;
