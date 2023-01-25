@@ -201,6 +201,7 @@
                             @include big_unit;
                         }
                         .decimal {
+                            border-top: 1px solid $border_colour;
                             @include small_value;
                             text-align: center;
                             font-size: 50px;

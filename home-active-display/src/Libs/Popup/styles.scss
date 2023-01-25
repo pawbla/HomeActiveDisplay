@@ -7,7 +7,35 @@
     left: 177px;
     background-color: black;
     border: 5px ridge $main_colour;
-    padding: 20px 30px;
+    padding: 10px;
     font-size: 30px;
+    opacity: 0.9;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
     @include unselected_text;
+    z-index: 10;
+    .popupBtn {
+        border: 2px solid $main_colour;
+        border-radius: 6px;
+        width: 130px;
+        height: 60px;
+        background-color: black;
+        opacity: 0.9;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+            background-color: $main_colour;
+            color: black;
+        }
+        div {
+            font-size: 15px;
+        }
+    }
 }
+
+
+
