@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './styles.scss';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export function Button({component: Component, label, path, onClick,  ...props}) {
     return(
@@ -12,6 +13,12 @@ export function Button({component: Component, label, path, onClick,  ...props}) 
 export function BackButton() {
     return (
         <SimpleButton component={ArrowBackIosIcon} className="bbutton" path="/weather"/>
+    )
+}
+
+export function GoButton(onClick) {
+    return (
+        <SimpleButton component={ArrowForwardIosIcon} className="bbutton" exOnClick={onClick}/>
     )
 }
 

@@ -10,3 +10,19 @@
     font-family: monospace;
     font-size: 17px;
 }
+
+.dropdownList {
+    height: 45px;
+    width: 18%;
+    border: 3px solid $main_colour;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 2px;
+    background-color: black;
+    color: $main_colour;
+    font-family: monospace;
+    font-size: 18px;
+    option {
+        font-size: 20px;
+    }
+}
