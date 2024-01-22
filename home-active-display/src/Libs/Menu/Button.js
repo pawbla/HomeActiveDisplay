@@ -16,9 +16,14 @@ export function BackButton() {
     )
 }
 
-export function GoButton(onClick) {
+export function GoButton({onClickGo}) {
+
+    const onClickGoButton = () => {
+        onClickGo()
+    }
+
     return (
-        <SimpleButton component={ArrowForwardIosIcon} className="bbutton" exOnClick={onClick}/>
+        <SimpleButton component={ArrowForwardIosIcon} className="bbutton" exOnClick={onClickGoButton}/>
     )
 }
 

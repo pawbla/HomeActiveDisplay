@@ -20,5 +20,16 @@ export const endpoints = {
             apiVersion: "v1",
             uri: "monitoring/status"            
         }
+    },
+    history: {
+        port: "8087",
+        validData: {
+            apiVersion: "v1",
+            uri: "history/weather/validData"
+        },
+        data: {
+            apiVersion: "v1",
+            uri: "history/weather/"
+        }
     }
 }

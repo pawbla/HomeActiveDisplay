@@ -10,7 +10,7 @@ export default function MiddleComponent(props) {
 
     const [selectedItem, setSelectedItem] = useState();
 
-    const {payload}  = useSelector((state) => state.fetchSensorInfo)
+    const {payload}  = useSelector((state) => state.fetchHistoryValidData)
 
   useEffect(() => {
       dispatch(getSensorInfo());
