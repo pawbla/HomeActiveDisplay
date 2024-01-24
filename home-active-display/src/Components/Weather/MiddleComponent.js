@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, XAxis, YAxis, Bar,Tooltip } from 'recharts';
+import { BarChart, XAxis, YAxis, Bar } from 'recharts';
 
 import Label from '../common/Label';
 import {calculateHistory} from '../../utils/pressureUtils';
@@ -188,7 +188,7 @@ function PressureComponent(props) {
                     height={70} 
                     data={calculateHistory(props.pressure.history, props.pressure.pressure)} 
                     barCategoryGap={1}>
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="name"/>
                     <YAxis 
                         domain={[getMinWithOffset(props.pressure.history), getMaxWithOffset(props.pressure.history)]} 
                         hide={true}/> 

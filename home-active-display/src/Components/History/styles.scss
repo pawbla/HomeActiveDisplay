@@ -1,0 +1,17 @@
+@import "../../vars";
+@import "../../mixins";
+
+.history {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    flex-grow: 2;
+    .historyMenu {
+        flex-basis: 70px;
+        display: flex;
+        align-items: center;
+    }
+    .historyGraph {
+        flex-grow: 2;
+    }
+}
