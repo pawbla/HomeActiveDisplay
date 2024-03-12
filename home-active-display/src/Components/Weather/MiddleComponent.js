@@ -48,7 +48,7 @@ import pic44  from '../../assets/images/weatherIcons/44.png';
 
 import compass  from '../../assets/images/utils/compass.png';
 
-const CHART_OFFSET = 1;
+const CHART_OFFSET = 2;
 
 export default function MiddleComponent(props) {
     return(
@@ -200,9 +200,13 @@ function PressureComponent(props) {
 }
 
 const getMinWithOffset = (pressureArr) => {
-    return Math.min(...pressureArr.map(i => i.value)) - CHART_OFFSET;
+    let min = pressureArr.map(i => i.value).sort()[0];
+    return min - CHART_OFFSET;
 }
 
 const getMaxWithOffset = (pressureArr) => {
-    return Math.max(...pressureArr.map(i => i.value)) + CHART_OFFSET;
+    let len = pressureArr.length
+    let max = pressureArr.map(i => i.value).sort()[len-1];
+
+    return max + CHART_OFFSET;
 }

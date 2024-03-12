@@ -9,10 +9,9 @@ function History() {
 
     return(
         <div className="history">
-            <Menu />
             <Graph />
         </div>
     );
 }
 
-export default mainPage(History);
+export default mainPage(History, Menu);

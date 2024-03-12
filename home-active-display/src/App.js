@@ -9,7 +9,7 @@ import Shutdown from './Components/Shutdown/Shutdown';
 
 //Mocked service for testing purpose, remove when deployed for integration
 import { mockedBackend } from './Mocks/mockedBackend';
-//mockedBackend();
+mockedBackend();
 
 function App() {
   return (

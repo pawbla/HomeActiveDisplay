@@ -6,12 +6,17 @@
     flex-flow: column nowrap;
     align-items: stretch;
     flex-grow: 2;
-    .historyMenu {
-        flex-basis: 70px;
-        display: flex;
-        align-items: center;
-    }
     .historyGraph {
         flex-grow: 2;
+    }
+}
+
+.top > div:last-child {
+    .historyMenu {
+        display: flex;
+        justify-content: flex-start;
+        .bbutton {
+            flex-grow: 0;
+        }
     }
 }
